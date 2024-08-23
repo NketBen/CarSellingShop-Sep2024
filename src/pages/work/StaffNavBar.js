@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { toast } from "react-toastify";
 import { db } from "../../firebase";
 import { doc, getDoc} from "firebase/firestore";
+import ClientComplains from './ClientComplains';
 
 
 
@@ -23,6 +24,7 @@ export default function StaffNavBar () {
        const [almacenList, setAlmacenList]=useState("");
          const [finance, setFinance]=useState("");
          const [insurance, setInsurance]=useState("");
+           const [clientComplains, setClientComplains]=useState("");
          const [pendingfinance, setPendingFinance]=useState("");
           const [pendingInsurance, setPendingInsurance]=useState("");
 
@@ -69,6 +71,7 @@ export default function StaffNavBar () {
         setPendingFinance("Listas de Peticiones Financieros de Clentes")
         setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
+         setClientComplains("Quejas y consultas de clente ")
 
 
       } 
@@ -88,6 +91,7 @@ function getRol1(){
         setMyWork("Mis Listas de tareas");
         setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
+          setClientComplains("Quejas y consultas de clente ")
      
 
 
@@ -149,6 +153,7 @@ function getRol4(){
         setAlmacenList("Abrir y Actualizar pieza")
         setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
+          setClientComplains("Quejas y consultas de clente ")
         
 
       } 
@@ -175,6 +180,7 @@ function getRol5(){
          setPendingFinance("Listas de Peticiones Financieros de Clentes")
          setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
+          setClientComplains("Quejas y consultas de clente ")
 
 
       } 
@@ -212,6 +218,16 @@ getRol5()
               {almacenList}
             </li>
 
+
+              <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                gotoRoute("/ClientComplains") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/ClientComplains")}
+            >
+              {clientComplains}
+            </li>
+
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 gotoRoute("/WorkList") && "text-black border-b-red-500"
@@ -232,11 +248,11 @@ getRol5()
 
              <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                gotoRoute("/CarCheck") && "text-black border-b-red-500"
+                gotoRoute("/AlmacenList") && "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/CarCheck")}
+              onClick={() => navigate("/AlmacenList")}
             >
-             {carinfo}
+             {almacenList}
             </li>
 
 
