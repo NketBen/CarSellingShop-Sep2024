@@ -118,6 +118,8 @@ const [paraForm, SetParaForm] = useState({
             Almacen
           </Nav.Link>
         </Nav.Item>
+
+        <Nav.Item>
             <Nav.Link
             href="/MyWorkList"
             className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
@@ -125,7 +127,7 @@ const [paraForm, SetParaForm] = useState({
             Mis listas de Trabajo Personal
           </Nav.Link>
         </Nav.Item>
-      </Nav>
+     </Nav>
 
       <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
         <Form onSubmit={handleSubmit}>
