@@ -19,6 +19,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { getAuth} from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
+import StaffNavBar from "./StaffNavBar";
 
 export default function CreateWorks() {
   // const [newName, setNewName] = useState("");
@@ -212,6 +213,7 @@ images,
 
   return (
     <div className="App">
+    <StaffNavBar/>
       <Nav className="justify-content-center" activeKey="/Home">
         <Nav.Item>
           <Nav.Link

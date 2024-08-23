@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import StaffNavBar from "./StaffNavBar";
 
 export default function CarFinance() {
   const navigate = useNavigate();
@@ -172,6 +173,9 @@ export default function CarFinance() {
   }
   return (
     <main className="max-w-md px-2 mx-auto">
+    <nav>
+      <StaffNavBar/>
+    </nav>
       <h1 className="text-3xl text-center mt-6 font-bold">Subir su Informacion para Financiar el Coche</h1>
       <form onSubmit={onSubmit}>
         <p className="text-lg mt-6 font-semibold">secondHand / new</p>

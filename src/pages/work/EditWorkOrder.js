@@ -15,6 +15,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { toast } from "react-toastify";
+import StaffNavBar from "./StaffNavBar";
 
 export default function Update() {
   const [works, setWorks] = useState([]);
@@ -82,6 +83,7 @@ export default function Update() {
   return (
     <div>
       <nav className="mt-3">
+      <StaffNavBar/>
         <button
           onClick={() => {
             navigate("/Worklist");

@@ -20,6 +20,7 @@ import { db } from "../../firebase";
 import { FcHome } from "react-icons/fc";
 import { useEffect } from "react";
 import ProfileInfo from "../../profileFoto/ProfileInfo";
+import StaffNavBar from "./StaffNavBar";
 
 export default function MyStaffProfile() {
   const auth = getAuth();
@@ -108,14 +109,7 @@ export default function MyStaffProfile() {
   return (
     <div className="bg-green-100">
       <nav className="mt-3 ps-4 text-center">
-        <button
-          onClick={() => {
-            navigate("/CompletedWork");
-          }}
-          className="bg-blue-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Listas de Trabajos Acabado
-        </button>
+       <StaffNavBar/>
         <button
           onClick={() => {
             navigate("/StaffHome");

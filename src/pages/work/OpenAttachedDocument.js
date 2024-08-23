@@ -45,8 +45,8 @@ export default function OpenAttachedDocument() {
   }
   return (
     <div>
-    
-    <div>
+    <nav>
+        <div>
         <button
           onClick={() => {
             navigate("/CompletedWork");
@@ -56,6 +56,8 @@ export default function OpenAttachedDocument() {
           Back
         </button>
       </div>
+
+    </nav>
 
     
     <main>

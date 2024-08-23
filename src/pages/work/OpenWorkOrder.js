@@ -7,6 +7,7 @@ import { useNavigate, useParams} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
+import StaffNavBar from "./StaffNavBar";
 
 export default function OpenWorkOrder() {
   const [works, setWorks] = useState([]);
@@ -91,14 +92,7 @@ const resetTimer = () => {
   return (
     <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
       <nav className="mt-3 ps-4">
-        <button
-          onClick={() => {
-            navigate("/CompletedWork");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Listas de Trabajos Acabado
-        </button>
+  <StaffNavBar/>
         <button
           onClick={() => {
             navigate("/StaffHome");
@@ -108,14 +102,7 @@ const resetTimer = () => {
           Pagina Principal de Staff
         </button>
 
-        <button
-          onClick={() => {
-            navigate("/PendingWorks");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Trabajos Pendientes
-        </button>
+    
       </nav>
       <h2 className="text-center">
         Orden de trabajos Creado Por {works.Creator}

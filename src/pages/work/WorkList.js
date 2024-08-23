@@ -4,6 +4,7 @@ import { collection, doc, deleteDoc, } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import StaffNavBar from "./StaffNavBar";
 
 
 export default function Worklist() {
@@ -36,14 +37,7 @@ export default function Worklist() {
   return (
     <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
       <nav className="mt-3 ps-4">
-        <button
-          onClick={() => {
-            navigate("/CompletedWork");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Listas de Trabajos Acabado
-        </button>
+      <StaffNavBar/>
         <button
           onClick={() => {
             navigate("/StaffHome");
@@ -53,14 +47,7 @@ export default function Worklist() {
           Pagina Principal de Staff
         </button>
 
-        <button
-          onClick={() => {
-            navigate("/PendingWorks");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Trabajos Pendientes
-        </button>
+
       </nav>
       <h2 className="text-center">Listas de todos orden de trabajos </h2>
 

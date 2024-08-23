@@ -21,6 +21,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { useNavigate, useParams } from "react-router-dom";
 import AwesomeSlider from "react-awesome-slider";
 import { toast } from "react-toastify";
+import StaffNavBar from "./StaffNavBar";
 
 function CloseWork() {
   let today=new Date();
@@ -184,14 +185,7 @@ function CloseWork() {
   return (
     <div className="bg-red-100">
       <nav className="mt-3">
-        <button
-          onClick={() => {
-            navigate("/Worklist");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Listas de todos trabajos
-        </button>
+  <StaffNavBar/>
         <button
           onClick={() => {
             navigate("/StaffHome");

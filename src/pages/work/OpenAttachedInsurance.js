@@ -43,8 +43,8 @@ export default function OpenAttachedInsurance() {
   }
   return (
     <div>
-    
-    <div>
+<nav>
+  <div>
         <button
           onClick={() => {
             navigate(`/open-insurance/${item.id}`);
@@ -54,7 +54,7 @@ export default function OpenAttachedInsurance() {
           Back
         </button>
       </div>
-
+</nav>
     
     <main>
   
@@ -78,10 +78,6 @@ export default function OpenAttachedInsurance() {
             </SwiperSlide>
           ))}
         </Swiper>
-      
-
-
-
 
     </main>
     </div>

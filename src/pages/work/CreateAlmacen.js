@@ -13,6 +13,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { getAuth} from "firebase/auth";
 import { toast } from "react-toastify";
 import Almacen from './AlmacenList';
+import StaffNavBar from "./StaffNavBar";
 
 function CreateAlmacen() {
   const [manName, setManName] = useState("");
@@ -108,14 +109,7 @@ const [paraForm, SetParaForm] = useState({
     <div>
     <div className="App">
       <Nav className="justify-content-center" activeKey="/Home">
-        <Nav.Item>
-          <Nav.Link
-            href="/WorkList"
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Listas de Trabajos
-          </Nav.Link>
-        </Nav.Item>
+      <StaffNavBar/>
         <Nav.Item>
           <Nav.Link
             href="/AlmacenList"
@@ -124,8 +118,7 @@ const [paraForm, SetParaForm] = useState({
             Almacen
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
+            <Nav.Link
             href="/MyWorkList"
             className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
           >

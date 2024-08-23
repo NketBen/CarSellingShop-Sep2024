@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { toast } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getAuth} from "firebase/auth";
+import StaffNavBar from "./StaffNavBar";
 
 
 export default function OpenInsurance() {
@@ -43,14 +44,7 @@ export default function OpenInsurance() {
   return (
     <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
       <nav className="mt-3 ps-4">
-        <button
-          onClick={() => {
-            navigate("/CompletedWork");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Listas de Trabajos Acabado
-        </button>
+    <StaffNavBar/>
         <button
           onClick={() => {
             navigate("/StaffHome");
@@ -60,14 +54,7 @@ export default function OpenInsurance() {
           Pagina Principal de Staff
         </button>
 
-        <button
-          onClick={() => {
-            navigate("/PendingWorks");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Trabajos Pendiente
-        </button>
+  
       </nav>
 
 <h2> Solicitante: {insurance.Oldname}  con telefono: {insurance.TelNo} y email: {insurance.email}</h2>

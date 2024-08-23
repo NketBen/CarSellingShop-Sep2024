@@ -43,8 +43,9 @@ export default function OpenAttacheFinance() {
   }
   return (
     <div>
+    <nav>
     
-    <div>
+      <div>
         <button
           onClick={() => {
             navigate(`/open-finance/${item.id}`);
@@ -55,6 +56,9 @@ export default function OpenAttacheFinance() {
         </button>
       </div>
 
+    
+    </nav>
+  
     
     <main>
   

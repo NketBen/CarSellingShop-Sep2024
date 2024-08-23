@@ -14,6 +14,7 @@ import { db } from "../../firebase";
 import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "../../components/Spinner";
+import StaffNavBar from "./StaffNavBar";
 
 export default function PendingWorks() {
   const [works, setWorks] = useState([]);
@@ -56,14 +57,7 @@ export default function PendingWorks() {
   return (
     <div>
       <nav className="mt-3 ps-4">
-        <button
-          onClick={() => {
-            navigate("/create-works");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Crear Listas de trabajo
-        </button>
+<StaffNavBar/>
 
         <button
           onClick={() => {
