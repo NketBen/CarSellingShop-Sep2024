@@ -76,72 +76,7 @@ export default function StaffHome() {
      <div>
       <StaffNavBar/>
     </div>
-      <div className="mt-3">
-        <div className="text-center mb-3 mt-5 ps-2">
-          <button
-            onClick={() => {
-              navigate("/MyStaffProfile");
-            }}
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Mi perfil de trabajo
-          </button>
-          <button
-            onClick={() => {
-              navigate("/CreateWorks");
-            }}
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Crear Listas de trabajo
-          </button>
-          
-          <button
-                      onClick={() => {
-                        navigate("/CarFinance");
-                      }}
-                      className="bg-slate-200 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-                    >
-                      Car Financiero
-                    </button>
-
-
-
-          <button
-            onClick={() => {
-              navigate("/WorkList");
-            }}
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Listas de todos orden de trabajos
-          </button>
-
-          <button
-            onClick={() => {
-              navigate("/ClientComplains");
-            }}
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Listas de Quejas de Cliente
-          </button>
-          <button
-            onClick={() => {
-              navigate("/CompletedWork");
-            }}
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Listas de Trabajos Acabado
-          </button>
-
-          <button
-            onClick={() => {
-              navigate("/PendingWorks");
-            }}
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Listas de Trabajos Pendientes
-          </button>
-        </div>
-      </div>
+    
 
       <section className="max-w-6xl mx-auto flex justify-center works-center flex-col">
         <h1 className="text-3xl text-center mt-6 font-bold">
