@@ -48,15 +48,11 @@ export default function MyWorkList() {
   return (
     <div className="bg-green-50">
       <Nav className="justify-content-center" activeKey="/Home">
+       
         <Nav.Item>
-          <Nav.Link href="/WorkList">Listas de Trabajos</Nav.Link>
+          <Nav.Link href="/StaffHome">Contactar con Nosotros</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/MyForms">Contactar con Nosotros</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/CompletedWork">Listas de Trabajo Acabado</Nav.Link>
-        </Nav.Item>
+  
       </Nav>
 
       <h2 className="text-2xl text-center font-semibold mb-6">Listas de Trabajos de {Name}</h2>
