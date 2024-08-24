@@ -13,7 +13,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import OAuth from './../../components/OAuth';
-import StaffNavBar from "./StaffNavBar";
+
 
 
 
@@ -166,7 +166,7 @@ export default function Insurance (){
 return(
     
  <div style={{ with:300, height:1000  }}>
-<StaffNavBar/>
+
  <h1 className="text-center">Formulario De Solicitud de Seguro</h1> 
 
   <Form onSubmit={handleSubmit}>
