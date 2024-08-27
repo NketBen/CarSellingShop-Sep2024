@@ -39,7 +39,7 @@ import OpenAttachedDocument from "./pages/work/OpenAttachedDocument";
 import OpenAlmacen from "./pages/work/OpenAlmacen";
 import AlmacenList from "./pages/work/AlmacenList"; 
 import StaffNavBar from "./pages/work/StaffNavBar";
-import SearchBar from "./pages/work/SearchBar";
+//import SearchBar from "./pages/work/SearchBar";
 import CarFinance from "./pages/work/CarFinance";
 import PendingFinance from "./pages/work/PendingFinance";
 import CreateAlmacen from "./pages/work/CreateAlmacen";
@@ -48,6 +48,9 @@ import OpenAttachedFinance from "./pages/work/OpenAttachedFinance";
 import PendingInsurance from "./pages/work/PendingInsurance";
 import OpenInsurance from "./pages/work/OpenInsurance";
 import OpenAttachedInsurance from "./pages/work/OpenAttachedInsurance";
+import CitaPrevia from "./pages/work/CitaPrevia";
+import CitaList from "./pages/work/CitaList";
+import OpenCitaList from "./pages/work/OpenCitaList";
 
 
 
@@ -65,7 +68,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/MyForms" element={<MyForms />} />
           <Route path="/Document" element={<Document/>} />
-          <Route path="/SearchBar" element={<SearchBar/>} />
+          
           <Route path="/document/:workId" element={<Document />} />
           <Route path="/ReAbreOT" element={<ReAbreOT />} />
           <Route path="/re-abre-OT/:workClosedId" element={<ReAbreOT />} />
@@ -90,6 +93,9 @@ function App() {
           <Route path="/CompletedWork" element={<CompletedWork />} />
           <Route path="/completed-work/:workId" element={<CompletedWork />} />
           <Route path="/WorkList" element={<WorkList />} />
+          <Route path="/CitaList" element={<CitaList />} />
+          <Route path="/cita-list/:citaListId" element={<CitaList />} />
+          <Route path="/Open-cita-list/:citaListId" element={<OpenCitaList />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/contact-us/:messageId" element={<ContactUs />} />
           <Route path="/CloseWork" element={<CloseWork />} />
@@ -110,12 +116,12 @@ function App() {
           <Route path="/category/:categoryName/:itemId" element={<Items />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
-
+          
           <Route path="/OpenWorkOrder" element={<OpenWorkOrder />} />
           <Route path="/open-work-order/:worksId" element={<OpenWorkOrder />} />
           <Route path="/StaffNavBar" element={<StaffNavBar />} />
           <Route path="/CreateAlmacen" element={<CreateAlmacen />} />
-          
+          <Route path="/CitaPrevia" element={<CitaPrevia/>} />
           <Route path="/CloseWork" element={<CloseWork />} />
           <Route path="/close-work/:workId" element={<CloseWork />} />
           <Route path="/ItemFoto" element={<ItemFoto />} />
