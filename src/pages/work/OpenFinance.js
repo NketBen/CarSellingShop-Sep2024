@@ -41,7 +41,7 @@ export default function OpenFinance() {
   };
 
   return (
-    <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
+    <div className="bg-slate-400">
       <nav className="mt-3 ps-4">
      <StaffNavBar/>
         <button
@@ -58,11 +58,11 @@ export default function OpenFinance() {
 
 <h2> Solicitante: {finance.Oldname}  con telefono: {finance.TelNo} y email: {finance.email}</h2>
 
-         <p  className="text-right font-bold">
+         <p  className="text-right font-bold mr-6">
          Tipo de Coche : {finance.type} <b /> <br />
          </p>
             
-         <p className="text-center font-bold ">
+         <p className="text-left ml-6 font-bold ">
           Nombre de Coche: {finance.name} <br />
             Dueños Anteriores {finance.previousOwners} <br />
             ITV: {finance.MOT} <br />

@@ -43,24 +43,20 @@ export default function OpenAttacheFinance() {
   }
   return (
     <div>
-    <nav>
+        <nav>
     
-      <div>
         <button
           onClick={() => {
-            navigate(`/open-finance/${item.id}`);
+            navigate(`/open-finance/${params.financeId}`);
           }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-20 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
+          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-40 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
         >
           Back
         </button>
-      </div>
-
     
     </nav>
-  
     
-    <main>
+    <div>
   
         <Swiper
           slidesPerView={1}
@@ -69,11 +65,12 @@ export default function OpenAttacheFinance() {
           effect="fade"
           modules={[EffectFade]}
           autoplay={{ delay: 5000 }}
+          className="relative w-1/2 overflow-hidden h-[800px]"
         >
           {item.imgUrls.map((url, index) => (
             <SwiperSlide key={index}>
               <div
-                className="relative w-full overflow-hidden h-[600px]"
+                className="relative w-full overflow-hidden h-[800px]"
                 style={{
                   background: `url(${item.imgUrls[index]}) center no-repeat`,
                   backgroundSize: "contain",
@@ -83,7 +80,7 @@ export default function OpenAttacheFinance() {
           ))}
         </Swiper>
       
-    </main>
+    </div>
     </div>
   );
 }

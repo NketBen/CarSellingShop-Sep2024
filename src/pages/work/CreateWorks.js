@@ -118,7 +118,7 @@ images,
   }
 
 
-
+// funcion para crear tareas
   const createJob = async () => {
    
        setLoading(true);
@@ -129,7 +129,7 @@ images,
       return;
     }
     
-
+// se hace referencia para poder enviar imagenes a Storage
     async function storeImage(image) {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
@@ -170,7 +170,7 @@ images,
     });
 
   
-
+// addDoc poner informacion listado en su segundo argumento a la colecion de referencia en FireStore.
 
     await addDoc(workCollectionRef, {
       name: newName,
@@ -213,35 +213,9 @@ images,
 
 
   return (
-    <div className="App">
+    <div className="bg-slate-400 ">
     <StaffNavBar/>
-      <Nav className="justify-content-center" activeKey="/Home">
-        <Nav.Item>
-          <Nav.Link
-            href="/WorkList"
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Listas de Trabajos
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            href="/MyForms"
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Contactar con Nosotros
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            href="/MyWorkList"
-            className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
-          >
-            Mis listas de Trabajo Personal
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-
+      
       <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
         <Form onSubmit={handleSubmit}>
           <InputGroup className="mb-3 text-center ps-5 pe-5 ">

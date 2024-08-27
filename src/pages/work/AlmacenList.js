@@ -48,15 +48,6 @@ export default function Almacen() {
         >
           Pagina Principal de Staff
         </button>
-
-        <button
-          onClick={() => {
-            navigate("/SearchBar");
-          }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"
-        >
-          Buscar en Almacen
-        </button>
       </nav>
       <h2 className="text-center">Listas de todos orden de trabajos </h2>
 

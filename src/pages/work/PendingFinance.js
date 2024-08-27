@@ -16,7 +16,7 @@ export default function PendingFinance() {
   const financeRef = collection(db, "finance"); //referencia a coleccion finance
 
   useEffect(() => {
-    //hacemos copia instantenea para tener copia exacta instantenea en cuanto se cambia algo en la referencia
+    //hacemos copia instantenea para tener copia instantenea exacta en cuanto se cambia algo en la referencia
     const unsuscribe = onSnapshot(financeRef, (snapshot) => {
       setWorks(
         snapshot.docs.map((doc) => ({
@@ -39,7 +39,7 @@ export default function PendingFinance() {
   };
 
   return (
-    <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
+    <div className="bg-slate-400">
       <nav className="mt-3 ps-4">
 <StaffNavBar/>
         <button

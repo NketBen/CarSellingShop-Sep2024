@@ -95,7 +95,7 @@ export default function PendingWorks() {
                   Direccion de Contracta: {work.data.Address} <br />
                   Fecha de Inicio: {work.data.FechaInicio} <br />
                   Fecha para Terminar: {work.data.FechaTerminar} <br/>
-                  Imagenes adjuntados:  {work.data.Images}
+                  Imagenes adjuntados:  {work.data.imgAdjuntado}
                   <br />
                 </Link>
                 <div>

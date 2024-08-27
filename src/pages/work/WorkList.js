@@ -35,7 +35,7 @@ export default function Worklist() {
   };
   
   return (
-    <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
+    <div className="bg-slate-400">
       <nav className="mt-3 ps-4">
       <StaffNavBar/>
         <button

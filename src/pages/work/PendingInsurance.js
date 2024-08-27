@@ -39,7 +39,7 @@ export default function PendingInsurance() {
   };
 
   return (
-    <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
+    <div className="bg-slate-400 ">
       <nav className="mt-3 ps-4">
     <StaffNavBar/>
         <button
@@ -60,7 +60,7 @@ export default function PendingInsurance() {
           Mis Trabajos
         </button>
       </nav>
-      <h2 className="text-center">Listas de todos Solicitudes de Financiero </h2>
+      <h2 className="text-center">Listas de todos Solicitudes de Seguros </h2>
 
       <ul>
         {works.map((insurance) => (
@@ -69,7 +69,7 @@ export default function PendingInsurance() {
             className="mb-5 mt-3 bg-clip-border p-6 border-4 border-violet-300 border-dashed"
           >
           <Link className="contents" to={`/open-insurance/${insurance.id}`}>
-            <h3> Solicitante: {insurance.data.Apellido}  con telefono: {insurance.data.TelNo} y email: {insurance.data.email}</h3>
+            <h3> Solicitante: {insurance.data.Apellido}  con telefono: {insurance.data.TelNo} y email: {insurance.data.Email}</h3>
             Nombre : {insurance.data.Nombre} <b /> <br />
             Apellido: {insurance.data.Apellido} <br />
             Fecha Nacimento {insurance.data.dateOfBirth} <br />
@@ -85,7 +85,7 @@ export default function PendingInsurance() {
 
             Marca: {insurance.data.Marca} <br />
             Modelo: {insurance.data.Modelo} <br />
-            Matricula: {insurance.data.Matriculat} <br />
+            Matricula: {insurance.data.Matricula} <br />
 
             <h2 className="text-left ps-5 mt-3">Historia Bonificacion</h2>
 
@@ -103,7 +103,7 @@ export default function PendingInsurance() {
 
              <h2 className="text-left ps-5 mt-3">Informacion Adicional</h2>
             
-            Quiene llevara seguro: {insurance.data.Portador}
+            ¿El tomador es el mismo que propietario y conductor?: {insurance.data.Portador}
             Tipo de Poliza que quieres: {insurance.data.TipoPoliza}
            
             <h2 className="text-left ps-5 mt-3">Mensaje Adjuntado</h2>
@@ -114,7 +114,7 @@ export default function PendingInsurance() {
 
          <h2 className="text-left ps-5 mt-3">Imagenes Adjuntado</h2>
 
-            Imagenes Adjuntado:  {(insurance.data.imgAdjuntado)? (insurance.data.imgAdjuntado) : "NO imagen adjuntado"} <br/>
+            Imagenes Adjuntado:  {(insurance.data.imgAdjutado)? (insurance.data.imgAdjutado) : "No imagen adjuntado"} <br/>
             
             
 
@@ -151,7 +151,7 @@ export default function PendingInsurance() {
                 }}
                 className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
               >
-                Abre Expidiente Financiero de cliente
+                Abre Expidiente Seguro del cliente
               </button>
             </div>
             <br />

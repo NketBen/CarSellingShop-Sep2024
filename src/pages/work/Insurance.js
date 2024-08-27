@@ -95,7 +95,7 @@ export default function Insurance (){
     }
 
     const imgUrls = await Promise.all(
-      [...images].map((image) => storeImage(image))
+      [images].map((image) => storeImage(image))
     ).catch((error) => {
       setLoader(false);
       toast.error("Imagenes subido");
@@ -153,7 +153,7 @@ export default function Insurance (){
     setNewMessage("");
     setNewTermino("");
     setNewTitulo("");
-    setImages({});
+   // setImages({});
 
      navigate("/PendingInsurance") // si todo sale bien, iremos a ruta en PendingInsurance
   };
@@ -248,7 +248,7 @@ return(
 
                    <Form.Group className="ps-5 pe-5" controlId="formGridState">
           <Form.Label>Tipo seguro a contratar</Form.Label>
-          <Form.Select defaultValue="..." onChange={(e) => setNewOpcion(e.target.value)}>
+          <Form.Select defaultValue="..." onChange={(e) => setTipo(e.target.value)}>
           <option>....</option>
           <option>Todo a riesgo sin franquicia</option>
           <option>Todo a riesgo con franquicia</option>
@@ -355,7 +355,6 @@ return(
           </p>
           <input
             type="file"
-            id="images"
             onChange={(e) => setImages(e.target.value)}
             accept=".jpg,.png,.jpeg"
             multiple

@@ -22,6 +22,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import AwesomeSlider from "react-awesome-slider";
 import { toast } from "react-toastify";
 import StaffNavBar from "./StaffNavBar";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { EffectFade, Autoplay, Navigation, Pagination,} from "swiper";
+import "swiper/css/bundle";
+
 
 function CloseWork() {
   let today=new Date();
@@ -80,7 +84,7 @@ function CloseWork() {
 
         setAddress(docSnap.data().address);
 
-        setImgUrls(docSnap.data().imgUrls);
+        setImgUrls(docSnap.data().Images);
 
         setTelNo(docSnap.data().TelNo);
         setContractaName(docSnap.data().contractaName);
@@ -124,7 +128,7 @@ function CloseWork() {
          contractaName: contractaName,
          commentsTecnico: commentsTecnico,
          userRef: userRef,
-         imageUrl: imgUrls,
+        imageUrl:  imgUrls,
        })
          .then(() => {
           toast.success("Se ha creado orden de trabajo correctamente👍");
@@ -349,21 +353,35 @@ function CloseWork() {
             Adjuntar Documento
           </button>
 
+
+
+
           {imgUrls ? (
-            <div className="h-[600px] w-1/2 object-cover hover:scale-110 transition-scale duration-300 ease-in">
-              <AwesomeSlider>
-                <div data-src={imgUrls[0]} />
-                <div data-src={imgUrls[1]} />
-                <div data-src={imgUrls[2]} />
-                <div data-src={imgUrls[3]} />
-                <div data-src={imgUrls[4]} />
-                <div data-src={imgUrls[5]} />
-                <div data-src={imgUrls[6]} />
-                <div data-src={imgUrls[7]} />
-                <div data-src={imgUrls[8]} />
-                <div data-src={imgUrls[9]} />
-              </AwesomeSlider>
-            </div>
+             <div>
+  
+        <Swiper
+          slidesPerView={1}
+          navigation
+          pagination={{ type: "progressbar" }}
+          effect="fade"
+          modules={[EffectFade]}
+          autoplay={{ delay: 5000 }}
+          className="relative w-1/2 overflow-hidden h-[800px]"
+        >
+          {imgUrls.map((url, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="relative w-full overflow-hidden h-[800px]"
+                style={{
+                  background: `url(${imgUrls[index]}) center no-repeat`,
+                  backgroundSize: "contain",
+                }}
+              ></div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+    </div>
           ) : (
             <p>No imagen adjuntado</p>
           )}

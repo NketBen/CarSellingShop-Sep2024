@@ -42,7 +42,7 @@ export default function OpenInsurance() {
   };
 
   return (
-    <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
+    <div className="bg-slate-400">
       <nav className="mt-3 ps-4">
     <StaffNavBar/>
         <button
@@ -57,13 +57,13 @@ export default function OpenInsurance() {
   
       </nav>
 
-<h2> Solicitante: {insurance.Oldname}  con telefono: {insurance.TelNo} y email: {insurance.email}</h2>
 
-         <p  className="text-right font-bold">
+
+         <p  className="text-right mr-6 font-bold">
          Car Tipo : {insurance.Marca} <b /> <br />
          </p>
-            <div className="text-center font-bold ">
-            <h3> Solicitante: {insurance.Apellido}  con telefono: {insurance.TelNo} y email: {insurance.email}</h3>
+            <div className="text-left ps-5 mt-3">
+            <h3> Solicitante: {insurance.Apellido}  con telefono: {insurance.TelNo} y email: {insurance.Email}</h3>
             Nombre : {insurance.Nombre} <b /> <br />
             Apellido: {insurance.Apellido} <br />
             Fecha Nacimento {insurance.dateOfBirth} <br />
@@ -79,17 +79,17 @@ export default function OpenInsurance() {
 
          
           
-       <div className="text-center font-bold ">
-       <h2 className="text-center">Informacion de coche</h2>
+       <div className="text-left ps-5 mt-3">
+       <h2 className="text-left ps-5">Informacion de coche</h2>
 
             Marca: {insurance.Marca} <br />
             Modelo: {insurance.Modelo} <br />
-            Matricula: {insurance.Matriculat} <br />
+            Matricula: {insurance.Matricula} <br />
 
        </div>
 
-       <div  className="text-center font-bold ">
-       <h2 className="text-center">Historia Bonificacion</h2>
+       <div  className="text-left ps-5 mt-3">
+       <h2 className="text-left ps-5">Historia Bonificacion</h2>
 
             Compania: {insurance.Compania} <br />
             Poliza: {insurance.Poliza} <br />
@@ -98,8 +98,8 @@ export default function OpenInsurance() {
        </div>
              
             
-       <div  className="text-center font-bold ">
-       <h2 className="text-center">Informacion Bancaria</h2>
+       <div  className="text-left ps-5 mt-3">
+       <h2 className="text-left ps-5">Informacion Bancaria</h2>
 
              Banco: {insurance.Banco}<br/>
             Cuenta de Banco: {insurance.CuentaBanco} <br />
@@ -110,24 +110,24 @@ export default function OpenInsurance() {
        </div>
 
            
-       <div className="text-center font-bold ">
-        <h2 className="text-center">Informacion Adicional</h2>
+       <div className="text-left ps-5 mt-3">
+        <h2 className="text-left ps-5">Informacion Adicional</h2>
             
-            Quiene llevara seguro: {insurance.Portador} <br/>
+            ¿El tomador es el mismo que propietario y conductor?: {insurance.Portador} <br/>
             Tipo de Poliza que quieres: {insurance.TipoPoliza}<br/>
        </div>
 
              
-          <div className="text-center font-bold ">
-            <h2 className="text-center">Mensaje Adjuntado</h2>
+          <div className="text-left ps-5 mt-3">
+            <h2 className="text-left ps-5">Mensaje Adjuntado</h2>
 
             Titulo Adjuntado: {insurance.Titulo}<br/>
             Mensaje Adjuntado: {insurance.Mensaje}<br/>
 
           </div> 
             
-      <div className="text-center font-bold ">
-        <h2 className="text-center">Imagenes Adjuntado</h2>
+      <div className="text-left ps-5 mt-3">
+        <h2 className="text-left ps-5">Imagenes Adjuntado</h2>
 
             Imagenes Adjuntado: {(insurance.imgAdjuntado)? (insurance.imgAdjuntado) : "NO imagen adjuntado"} <br/>
             

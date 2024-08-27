@@ -35,12 +35,13 @@ export default function StaffNavBar () {
  
   
 
-
+// Haremos useEffect para condicionar cada rol en cuanto que puede tener en su StaffNavBar
   useEffect(() => {
 
          try {
   const auth = getAuth();
-      
+      // crear function para tener trabajador en Staff que esta iniciado sesion ahora
+      //getting the current user from staff collection using getDoc
         async function getStaff() {
           const docRef = doc(db, "staff", auth.currentUser.uid);
           const docSnap = await getDoc(docRef);
@@ -55,7 +56,8 @@ export default function StaffNavBar () {
     } catch (error) {
       toast.error("Sus credenciales no vale, compruebalo");
     }
-
+ //Si este usuario es gerente
+ //if this user role is "gerente"
   if (login.rol==="gerente") {
         setStaffPerfil("Mi Perfil de trabajo");
         setInventario("Crear Inventario de piezas");
@@ -82,8 +84,8 @@ export default function StaffNavBar () {
   }, [login.rol]);
 
 
- 
-
+ //Si este usuario es personal de Venta
+ //if this user role is "Sale agent" 
 useEffect(()=>{
 function getRol1(){
   if (login.rol==="personalventa") {
@@ -104,7 +106,8 @@ getRol1()
 }, [login.rol])
 
 
-
+ //Si este usuario es Financiero
+ //if this user role is "Finance"
 useEffect(()=>{
 function getRol2(){
    if (login.rol==="financiero") {
@@ -125,8 +128,8 @@ getRol2()
 }, [login.rol])
 
 
-
-
+ //Si este usuario es gestor de venta de piezas
+ //if this user role is "Spare parts sale manager"
 useEffect(()=>{
 function getRol3(){
     if (login.rol==="gestorventa") {
@@ -142,11 +145,11 @@ function getRol3(){
       } 
 }
 getRol3()
-console.log(login.rol)
 }, [login.rol])
 
 
-
+ //Si este usuario es tecnico
+ //if this user role is "Mechanic or technician"
 useEffect(()=>{
 function getRol4(){
           if (login.rol==="tecnico") {
@@ -168,6 +171,8 @@ getRol4()
 }, [login.rol])
 
 
+ //Si este usuario es Director
+ //if this user role is "Director"
 useEffect(()=>{
 function getRol5(){
  if (login.rol==="director") {
@@ -201,7 +206,7 @@ getRol5()
     }
   }
   return (
-    <div className="bg-white border-b shadow-sm sticky top-0 z-40">
+    <div className="bg-white border-b shadow-sm sticky top-0 z-40 mr-4">
       <header className="flex justify-between items-center px-3 max-w-8xl mx-auto">
 
         <div>
@@ -347,7 +352,7 @@ getRol5()
             </li>
 
               <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-4 ${
                 gotoRoute("/PendingInsurance") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/PendingInsurance")}

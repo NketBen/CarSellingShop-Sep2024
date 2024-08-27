@@ -90,7 +90,7 @@ const resetTimer = () => {
   };
 
   return (
-    <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
+    <div className="bg-slate-400 ">
       <nav className="mt-3 ps-4">
   <StaffNavBar/>
         <button
@@ -137,43 +137,46 @@ const resetTimer = () => {
         </div>
       </div>
 
-      <h2 className="text-center">
+      <h2 className="text-left ps-5 mt-3">
         Numero de OT: {works.NumeroOT}, Asignar a: {works.name}
       </h2>
 
-      <p className="text-right font-bold ">
+      <p className="text-left ps-5 mt-3 ml-3">
         ID : {works.id} <b /> <br />
       </p>
-      <p className="text-center font-bold underline">
+      <p className="text-left ps-5 mt-3 ml-3 font-bold underline">
         Name: {works.name} <br />
       </p>
-      <p className="text-center font-bold ">
-        {" "}
+      <p className="text-left ps-5 mt-3 ml-3 mr-3 font-bold ">
         Creador de OT: {works.Creator} <br />{" "}
       </p>
-      <h4 className="text-center font-bold ">
-        {" "}
+      <h4 className="text-left ps-5 ml-3 mt-3 font-bold ">
         Discripcion de trabajo: {works.Tareas} <br />
       </h4>
-      <p className="text-center font-bold text-stone-800">
+      <p className="text-left ml-3 ps-5 mt-3 ml-3 font-bold text-stone-800">
         Tipo de Trabajo: {works.TipoTrabajo} <br />
         Nombre de Departamento: {works.NameDepart} <br />
         Numero de Oredn de Trabajo: {works.NumeroOT} <br />
         Estado de Trabajo: {works.EstadoTrabajo} <br />
         Emergencia de Trabajo: {works.Emergencia} <br />
       </p>
-      <div className="text-center m-3">
+      <div className="text-left ps-5  ml-3 mr-3">
         Contrata Name: {works.contractaName} <br />
         Contracta Numero de telefono: {works.TelNo} <br />
-        Direccion de Contracta: {works.Address} <br />
+        Direccion de Contracta: {works.address} <br />
       </div>
 
-      <p className="text-center font-bold text-orange-900">
-        Fecha de Inicio: {works.FechaInicio} <br />
-        Fecha para Terminar: {works.FechaTerminar}
+      <p className="text-left ps-5 mt-3 ml-3 mr-3 font-bold text-orange-900">
+        Fecha de Inicio: {works.timeStart} <br />
+        Fecha para Terminar: {works.timeFinish}
       </p>
       <br />
-      Imagenes adjuntados:   {(works.Images)? (works.Images) : "NO imagen adjuntado"}  <br/>
+
+      <p className="text-left ps-5 mt-3 ml-3 mr-3">
+      Imagenes adjuntados:   {(works.imgAdjuntado)? (works.imgAdjuntado) : "No imagen adjuntado"}  <br/>
+      </p>
+      
+
       <button
         onClick={() => {
           deleteWork(params.workId);

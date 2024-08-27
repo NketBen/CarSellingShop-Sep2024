@@ -47,9 +47,9 @@ export default function OpenAttachedInsurance() {
   <div>
         <button
           onClick={() => {
-            navigate(`/open-insurance/${item.id}`);
+            navigate(`/open-insurance/${params.insuranceId}`);
           }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-20 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
+          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-40 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
         >
           Back
         </button>
@@ -65,11 +65,12 @@ export default function OpenAttachedInsurance() {
           effect="fade"
           modules={[EffectFade]}
           autoplay={{ delay: 5000 }}
+          className="relative w-1/2 overflow-hidden h-[800px]"
         >
           {item.images.map((url, index) => (
             <SwiperSlide key={index}>
               <div
-                className="relative w-full overflow-hidden h-[600px]"
+                className="relative w-full overflow-hidden h-[800px]"
                 style={{
                   background: `url(${item.images[index]}) center no-repeat`,
                   backgroundSize: "contain",
