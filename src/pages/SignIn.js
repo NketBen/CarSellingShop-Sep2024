@@ -1,3 +1,5 @@
+//Codigo para inicia sesión 
+//componente SignIn.js
 
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
@@ -24,11 +26,13 @@ export default function SignIn() {
     e.preventDefault();
     try {
       const auth = getAuth();
+      //utilzar metodo de firebase para iniciar sesion 
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
+      // si el usuario se autentica, se naviga a home
       if (userCredential.user) {
         navigate("/");
       }

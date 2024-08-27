@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<main
+  className="max-w-md px-2 mx-auto"
+>
+  <h1
+    className="text-3xl text-center mt-6 font-bold"
+  >
+    Crear tu Listas de ventas
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <p
+      className="text-lg mt-6 font-semibold"
+    >
+      secondHand / new
+    </p>
+    <div
+      className="flex"
+    >
+      <button
+        className="mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-white text-black"
+        id="type"
+        onClick={[Function]}
+        type="button"
+        value="sale"
+      >
+        secondHand
+      </button>
+      <button
+        className="ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-slate-600 text-white"
+        id="type"
+        onClick={[Function]}
+        type="button"
+        value="new"
+      >
+        New
+      </button>
+    </div>
+    <p
+      className="text-lg mt-6 font-semibold"
+    >
+      Nombre De Coche
+    </p>
+    <input
+      className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+      id="name"
+      maxLength="32"
+      minLength="5"
+      onChange={[Function]}
+      placeholder="Nombre de Coche"
+      required={true}
+      type="text"
+      value=""
+    />
+    <div
+      className="flex space-x-6 mb-6"
+    >
+      <div>
+        <p
+          className="text-lg font-semibold"
+        >
+          Seats
+        </p>
+        <input
+          className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+          id="seats"
+          max="50"
+          min="1"
+          onChange={[Function]}
+          required={true}
+          type="number"
+          value={1}
+        />
+      </div>
+    </div>
+    <p
+      className="text-lg mt-6 font-semibold"
+    >
+      MOT Pass
+    </p>
+    <div
+      className="flex"
+    >
+      <button
+        className="mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-white text-black"
+        id="MOT"
+        onClick={[Function]}
+        type="button"
+        value={true}
+      >
+        Yes
+      </button>
+      <button
+        className="ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-slate-600 text-white"
+        id="MOT"
+        onClick={[Function]}
+        type="button"
+        value={false}
+      >
+        No
+      </button>
+    </div>
+    <p
+      className="text-lg mt-6 font-semibold"
+    >
+      Defect
+    </p>
+    <div
+      className="flex"
+    >
+      <button
+        className="mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-white text-black"
+        id="defect"
+        onClick={[Function]}
+        type="button"
+        value={true}
+      >
+        Yes
+      </button>
+      <button
+        className="ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-slate-600 text-white"
+        id="defect"
+        onClick={[Function]}
+        type="button"
+        value={false}
+      >
+        No
+      </button>
+    </div>
+    <p
+      className="text-lg mt-6 font-semibold"
+    >
+      Address
+    </p>
+    <textarea
+      className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+      id="address"
+      onChange={[Function]}
+      placeholder="Direccion"
+      required={true}
+      type="text"
+      value=""
+    />
+    <p
+      className="text-lg font-semibold"
+    >
+      Descripción
+    </p>
+    <textarea
+      className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+      id="description"
+      onChange={[Function]}
+      placeholder="Descripción"
+      required={true}
+      type="text"
+      value=""
+    />
+    <p
+      className="text-lg font-semibold"
+    >
+      Oferta
+    </p>
+    <div
+      className="flex mb-6"
+    >
+      <button
+        className="mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-white text-black"
+        id="offer"
+        onClick={[Function]}
+        type="button"
+        value={true}
+      >
+        Si
+      </button>
+      <button
+        className="ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full bg-slate-600 text-white"
+        id="offer"
+        onClick={[Function]}
+        type="button"
+        value={false}
+      >
+        No
+      </button>
+    </div>
+    <div
+      className="flex items-center mb-6"
+    >
+      <div
+        className=""
+      >
+        <p
+          className="text-lg font-semibold"
+        >
+          Precio Real
+        </p>
+        <div
+          className="flex w-full justify-center items-center space-x-6"
+        >
+          <input
+            className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+            id="realPrice"
+            max="600000000"
+            min="100"
+            onChange={[Function]}
+            required={true}
+            type="number"
+            value={0}
+          />
+          <div
+            className=""
+          >
+            <p
+              className="text-md w-full whitespace-nowrap"
+            >
+              €
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="mb-6"
+    >
+      <p
+        className="text-lg font-semibold"
+      >
+        Images
+      </p>
+      <p
+        className="text-gray-600"
+      >
+        Primer imagen sera la cubierta (max 10)
+      </p>
+      <input
+        accept=".jpg,.png,.jpeg"
+        className="w-full px-3 py-1.5 text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:bg-white focus:border-slate-600"
+        id="images"
+        multiple={true}
+        onChange={[Function]}
+        required={true}
+        type="file"
+      />
+    </div>
+    <button
+      className="mb-6 w-full px-7 py-3 bg-blue-600 text-white font-medium text-sm uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+      type="submit"
+    >
+      Crear tu Listas
+    </button>
+  </form>
+</main>
+`;

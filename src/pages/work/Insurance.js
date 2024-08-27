@@ -54,7 +54,7 @@ export default function Insurance (){
     const [loader, setLoader] = useState(false);
 
     
-
+ 
     
     const usersCollectionRef = collection(db, "insurance");
 

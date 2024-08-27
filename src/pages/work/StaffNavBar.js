@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { toast } from "react-toastify";
 import { db } from "../../firebase";
 import { doc, getDoc} from "firebase/firestore";
-import ClientComplains from './ClientComplains';
+
 
 
 
@@ -27,6 +27,7 @@ export default function StaffNavBar () {
            const [clientComplains, setClientComplains]=useState("");
          const [pendingfinance, setPendingFinance]=useState("");
           const [pendingInsurance, setPendingInsurance]=useState("");
+          const[cita,setCita]=useState("");
 
 
   const location = useLocation();
@@ -72,6 +73,7 @@ export default function StaffNavBar () {
         setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
          setClientComplains("Quejas y consultas de clente ")
+         setCita("Citas Previa ")
 
 
       } 
@@ -92,6 +94,7 @@ function getRol1(){
         setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
           setClientComplains("Quejas y consultas de clente ")
+           setCita("Citas Previa ")
      
 
 
@@ -113,6 +116,7 @@ function getRol2(){
          setPendingFinance("Listas de Peticiones Financieros de Clentes")
          setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
+          setCita("Citas Previa ")
 
 
       }
@@ -133,6 +137,7 @@ function getRol3(){
         setInventario("Crear Inventario de piezas");
         setFinance("Peticiones Financieros de Clentes")
         setAlmacenList("Abrir y Actualizar pieza")
+         setCita("Citas Previa ")
 
       } 
 }
@@ -154,6 +159,7 @@ function getRol4(){
         setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
           setClientComplains("Quejas y consultas de clente ")
+           setCita("Citas Previa ")
         
 
       } 
@@ -181,6 +187,7 @@ function getRol5(){
          setInsurance("Peticiones Seguro de Clentes")
          setPendingInsurance("Listas de Peticiones Seguros de Clentes")
           setClientComplains("Quejas y consultas de clente ")
+           setCita("Citas Previa ")
 
 
       } 
@@ -329,7 +336,17 @@ getRol5()
               {insurance}
             </li>
 
-                           <li
+            
+             <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                gotoRoute("/CitaList") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/CitaList")}
+            >
+              {cita}
+            </li>
+
+              <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 gotoRoute("/PendingInsurance") && "text-black border-b-red-500"
               }`}

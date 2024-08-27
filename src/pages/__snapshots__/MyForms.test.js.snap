@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  style={
+    Object {
+      "height": 1000,
+      "with": 300,
+    }
+  }
+>
+  <h1
+    className="text-center"
+  >
+    Formulario De Contacto
+  </h1>
+  <form
+    className=""
+    onSubmit={[Function]}
+  >
+    <div
+      className="mb-3 text-center ps-5 pe-5  input-group"
+    >
+      <span
+        className="input-group-text"
+      >
+        Nombre
+      </span>
+      <input
+        aria-label="Entra tu Nombre"
+        className="form-control"
+        onChange={[Function]}
+      />
+    </div>
+    <div
+      className="mb-3 text-center ps-5 pe-5 input-group"
+    >
+      <span
+        className="input-group-text"
+      >
+        Apellido
+      </span>
+      <input
+        aria-label="Entra tu Apellido"
+        className="form-control"
+        onChange={[Function]}
+      />
+    </div>
+    <div
+      className="mb-3 text-center ps-5 pe-5"
+    >
+      <label
+        className="form-label"
+        htmlFor="formBasicEmail"
+      >
+        Email
+      </label>
+      <input
+        className="form-control"
+        id="formBasicEmail"
+        onChange={[Function]}
+        placeholder="Entra tu email"
+        type="email"
+      />
+      <small
+        className="text-muted form-text"
+      >
+        No revelamos Email de nuestra clientes.
+      </small>
+    </div>
+    <div
+      className="mb-3 text-center ps-5 pe-5"
+    >
+      <label
+        className="form-label"
+        htmlFor="formGridAddress1"
+      >
+        Direcion 1
+      </label>
+      <input
+        className="form-control"
+        id="formGridAddress1"
+        onChange={[Function]}
+        placeholder="La calle"
+      />
+    </div>
+    <div
+      className="mb-3 text-center ps-5 pe-5"
+    >
+      <label
+        className="form-label"
+        htmlFor="formGridAddress2"
+      >
+        Direccion 2
+      </label>
+      <input
+        className="form-control"
+        id="formGridAddress2"
+        onChange={[Function]}
+        placeholder="Apartmento, estudio, planta, ..."
+      />
+    </div>
+    <div
+      className="mb-3 text-center ps-5 pe-5 row"
+    >
+      <div
+        className="col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridCity"
+        >
+          Cuidad
+        </label>
+        <input
+          className="form-control"
+          id="formGridCity"
+          onChange={[Function]}
+          placeholder="Cuidad"
+        />
+      </div>
+      <div
+        className="text-center  col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridState"
+        >
+          Provencia
+        </label>
+        <input
+          className="form-control"
+          id="formGridState"
+          onChange={[Function]}
+          placeholder="Provencia"
+        />
+      </div>
+      <div
+        className="text-center col"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridZip"
+        >
+          Codigo Postal
+        </label>
+        <input
+          className="form-control"
+          id="formGridZip"
+          onChange={[Function]}
+          placeholder="Codigo Postal"
+        />
+      </div>
+    </div>
+    <div
+      className="mb-3 ps-5 pe-5"
+    >
+      <label
+        className="form-label"
+      >
+        Elegir la opcion que mas te conviene
+      </label>
+      <div
+        className="form-check"
+      >
+        <input
+          className="form-check-input"
+          disabled={false}
+          id="formHorizontalRadios1"
+          name="formHorizontalRadios"
+          onChange={[Function]}
+          type="radio"
+        />
+        <label
+          className="form-check-label"
+          htmlFor="formHorizontalRadios1"
+          title=""
+        >
+          Nino
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <input
+          className="form-check-input"
+          disabled={false}
+          id="formHorizontalRadios2"
+          name="formHorizontalRadios"
+          onChange={[Function]}
+          type="radio"
+        />
+        <label
+          className="form-check-label"
+          htmlFor="formHorizontalRadios2"
+          title=""
+        >
+          Adolescente
+        </label>
+      </div>
+      <div
+        className="form-check"
+      >
+        <input
+          className="form-check-input"
+          disabled={false}
+          id="formHorizontalRadios3"
+          name="formHorizontalRadios"
+          onChange={[Function]}
+          type="radio"
+        />
+        <label
+          className="form-check-label"
+          htmlFor="formHorizontalRadios3"
+          title=""
+        >
+          Adulto
+        </label>
+      </div>
+    </div>
+    <div
+      className="ps-5 pe-5"
+    >
+      <label
+        className="form-label"
+        htmlFor="formGridState"
+      >
+        Seleciona una idioma para comunicar contigo
+      </label>
+      <select
+        className="form-select"
+        defaultValue="..."
+        id="formGridState"
+        onChange={[Function]}
+      >
+        <option>
+          ....
+        </option>
+        <option>
+          Espanol
+        </option>
+        <option>
+          Ingles
+        </option>
+        <option>
+          Aleman
+        </option>
+        <option>
+          Francis
+        </option>
+        <option>
+          Italia
+        </option>
+        <option>
+          Chino
+        </option>
+      </select>
+    </div>
+    <div
+      className="mt-5 mb-4 pe-5 ps-5 input-group"
+    >
+      <span
+        className="input-group-text"
+      >
+        Escribir tu Titulo/Referencia
+      </span>
+      <textarea
+        aria-label="Escribir tu comentario"
+        className="form-control"
+        onChange={[Function]}
+      />
+    </div>
+    <div
+      className="mt-5 mb-4 pe-5 ps-5 input-group"
+    >
+      <span
+        className="input-group-text"
+      >
+        Escribir tu Comentario
+      </span>
+      <textarea
+        aria-label="Escribir tu comentario"
+        className="form-control"
+        onChange={[Function]}
+      />
+    </div>
+    <div
+      className="mb-4 mt-4 ps-5 pe-5"
+      id="formGridCheckbox"
+    >
+      <label
+        className="form-label"
+      >
+        He leido las terminos y condiciones
+      </label>
+      <div
+        className="form-check"
+      >
+        <input
+          className="form-check-input"
+          disabled={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <label
+          className="form-check-label"
+          title=""
+        >
+          Acepto los terminos y condiciones 
+        </label>
+      </div>
+    </div>
+    <div
+      className="text-center"
+    >
+      <button
+        className="mb-5 mt-3 ps-5 mx-auto btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
+`;

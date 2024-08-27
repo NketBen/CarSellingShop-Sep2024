@@ -1,3 +1,5 @@
+//componente que sube todos items a firestore 
+
 import { useState } from "react";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
@@ -8,7 +10,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
-export default function CreateProductList() {
+export default function CreateProductList() { 
   const navigate = useNavigate();
   const auth = getAuth();
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
@@ -60,7 +62,7 @@ export default function CreateProductList() {
         images: e.target.files,
       }));
     }
-    // Text/Boolean/Number
+    // Text/Booleano/Number
     if (!e.target.files) {
       SetParaForm((prevState) => ({
         ...prevState,
@@ -71,12 +73,12 @@ export default function CreateProductList() {
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    if (+discountedPrice >= +realPrice) {
+    if (+discountedPrice >= +realPrice) { //si el precio de rebajada es major que precio de choche
       setLoading(false);
       toast.error("Precio de Descuento debe ser mas que precio de Oferta");
       return;
     }
-    if (images.length > 10) {
+    if (images.length > 10) { // solo aceptamos hasta 10 imagenes
       setLoading(false);
       toast.error("No se permite mas de 10 imagenes");
       return;
@@ -84,8 +86,9 @@ export default function CreateProductList() {
     let geolocation = {};
     let location;
     if (geolocationEnabled) {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
+      //obtener coordinada de direccion en la formulario
+      const response = await fetch( 
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}` //google map api
       );
       const data = await response.json();
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
@@ -103,11 +106,12 @@ export default function CreateProductList() {
       geolocation.lng = longitude;
     }
 
+    //creamos una funcion para subir imagenes
     async function storeImage(image) {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
         const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
-        const storageRef = ref(storage, filename);
+        const storageRef = ref(storage, filename); // referencia de storage
         const uploadTask = uploadBytesResumable(storageRef, image);
         uploadTask.on(
           "state_changed",
@@ -133,7 +137,7 @@ export default function CreateProductList() {
         );
       });
     }
-
+    //tener url de imagenes subida
     const imgUrls = await Promise.all(
       [...images].map((image) => storeImage(image))
     ).catch((error) => {
@@ -153,10 +157,10 @@ export default function CreateProductList() {
     !paraFormCopy.offer && delete paraFormCopy.discountedPrice;
     delete paraFormCopy.latitude;
     delete paraFormCopy.longitude;
-    const docRef = await addDoc(collection(db, "items"), paraFormCopy);
+    const docRef = await addDoc(collection(db, "items"), paraFormCopy);// subir imagenes url y todos a firestore
     setLoading(false);
     toast.success("Se ha creado listado de item correctamente");
-    navigate(`/category/${paraFormCopy.type}/${docRef.id}`)
+    navigate(`/category/${paraFormCopy.type}/${docRef.id}`) //navegar a item subida
    
   }
 

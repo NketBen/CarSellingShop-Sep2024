@@ -1,4 +1,4 @@
-
+//componente Profile.js es donde tiene perfil de usuario
 import { getAuth, updateProfile } from "firebase/auth";
 import {
   collection,
@@ -33,6 +33,7 @@ export default function Profile() {
      
   });
   const { name, email } = formData;
+  //funcion para cerrar sesion 
   function LogOut() {
     auth.signOut();
     navigate("/");
@@ -46,9 +47,10 @@ export default function Profile() {
 
   async function onSubmit() {
     try {
-      if (auth.currentUser.displayName !== name) {
+      //si se ha insertado nombre diferente de usuario
+      if (auth.currentUser.displayName !== name) { 
         
-        await updateProfile(auth.currentUser, {
+        await updateProfile(auth.currentUser, { //actualiza el nombre puesto en campo name
           displayName: name,
         });
 
@@ -64,6 +66,9 @@ export default function Profile() {
       toast.error("Se ha producido un error, perfil no actualizado");
     }
   }
+  //consulta de todos listas de items de la usuario authenticado
+  // que tiene campo de userRef igual a uid.
+  //es decir los lista que hice este usuario,
   useEffect(() => {
     async function getUserItem() {
       const itemRef = collection(db, "items");
@@ -73,7 +78,8 @@ export default function Profile() {
         orderBy("timestamp", "desc")
       );
       
-      const querySnap = await getDocs(q);
+      // tener documentos de la consulta y asignar el matrix a items.
+      const querySnap = await getDocs(q); 
       let items = [];
       querySnap.forEach((doc) => {
         return items.push({
@@ -87,6 +93,8 @@ export default function Profile() {
     }
     getUserItem();
   }, [auth.currentUser.uid]);
+
+  //crear funcion para eliminar item
 
   async function Delete(itemID) {
     if (window.confirm("¿Estas seguro que quires Eliminar items?")) {
@@ -197,13 +205,14 @@ export default function Profile() {
               Mis items subida
             </h2>
             <ul className="sm:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            
               {items.map((item) => (
-                <ProductList
+                <ProductList   //lista cada item de la consulta
                   key={item.id}
                   id={item.id}
                   item={item.data}
 
-                  Delete={() => Delete(item.id)}
+                  Delete={() => Delete(item.id)} 
                   
                   Edit={() => Edit(item.id)}
                 />

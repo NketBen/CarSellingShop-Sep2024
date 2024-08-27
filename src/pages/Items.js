@@ -170,6 +170,16 @@ export default function Items() {
             >
               COMPRA AHORA
             </button>
+
+
+            <button
+              onClick={() => {
+                navigate("/CitaPrevia");
+              }}
+              className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
+            >
+              Cita Previa
+            </button>
           </div>
 
           <div>

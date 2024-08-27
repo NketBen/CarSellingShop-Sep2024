@@ -1,4 +1,5 @@
-
+// componente para reestabicimiento de contraseña
+//Componente ForgotPassword.js
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -16,6 +17,7 @@ export default function ForgotPassword() {
     e.preventDefault();
     try {
       const auth = getAuth();
+      //funcion para envia correo de restablicimiento
       await sendPasswordResetEmail(auth, email);
       toast.success("Se ha enviado Email correctamente");
     } catch (error) {
