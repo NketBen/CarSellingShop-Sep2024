@@ -18,37 +18,10 @@ import OAuth from './../../components/OAuth';
 
 
 
-
+// componente para solicitar seguro de coches
 
 export default function Insurance (){
-
-    const [newNombre, setNewNombre] = useState("");
-    const [newApellido, setNewApellido] = useState("");
-    const [dateBirth, setDateBirth] = useState("");
-    const [newEmail, setNewEmail] = useState("");
-    const [newDireccion1, setNewDireccion1] = useState("");
-    const [newDireccion2, setNewDireccion2] = useState("");
-    const [newCuidad, setNewCuidad] = useState("");
-    const [newProvencia, setNewProvencia]=useState("")
-    const [newCodPostal, setNewCodPostal] = useState("");
-    const [telNo, setTelNo] = useState("");
-    const [newOpcion, setNewOpcion] = useState("");
-    const [newIdioma, setNewIdioma] = useState(""); 
-    const [newTitulo, setNewTitulo] = useState(""); 
-    const [newMessage, setNewMessage] = useState("");
-    const [newTermino, setNewTermino] = useState(false);
-    const [marca, setMarca] = useState("");
-    const [modelo, setModelo] = useState("");
-    const [matricula, setMatricula] = useState("");
-    const [compania, setCompania] = useState("");
-    const [poliza, setPoliza] = useState("");
-    const [fechaEffecto, setFechaEffecto] = useState("");
-    const [tipo, setTipo] = useState("");
-    const [banco, setBanco] = useState("");
-    const [cuenta, setcuenta] = useState("");
-    const [nombrBanco, setNombreBanco] = useState("");
-    const [images, setImages] = useState({});
-    
+   
     
     const auth = getAuth();
 
@@ -56,17 +29,104 @@ export default function Insurance (){
 
      const navigate = useNavigate();
  
+ const [paraForm, SetParaForm] = useState({ 
+
+  newApellido:"",
+  dateBirth:"",
+  newEmail: "",
+  newDireccion1: "", 
+  newDireccion2:"", 
+  newCuidad:"", 
+  newProvencia:"", 
+  newCodPostal:"", 
+  telNo:"", 
+  newOpcion:"", 
+  newIdioma:"", 
+  newTitulo:"", 
+  newMessage:"", 
+  newTermino:"", 
+  marca:"", 
+  modelo:"", 
+  matricula:"", 
+  compania:"", 
+  poliza:"", 
+  fechaEffecto:"", 
+  tipo:"", 
+  banco:"", 
+  cuenta:"", 
+  nombrBanco:"", 
+  images:{}, 
+  newNombre:"", 
  
+ });
+
+
+  const {
+  newApellido,
+  dateBirth,
+  newEmail,
+  newDireccion1, 
+  newDireccion2, 
+  newCuidad, 
+  newProvencia, 
+  newCodPostal, 
+  telNo, 
+  newOpcion, 
+  newIdioma, 
+  newTitulo, 
+  newMessage, 
+  newTermino, 
+  marca, 
+  modelo, 
+  matricula, 
+  compania, 
+  poliza, 
+  fechaEffecto, 
+  tipo, 
+  banco, 
+  cuenta, 
+  nombrBanco, 
+  images, 
+  newNombre, 
+
+    } = paraForm;
+
+
+//creación de función para eventos de entradas
+    function onChange(e) {
+    let boolean = null;
+    if (e.target.value === "true") {
+      boolean = true;
+    }
+    if (e.target.value === "false") {
+      boolean = false;
+    }
+    // Files
+    if (e.target.files) {
+      SetParaForm((prevState) => ({
+        ...prevState,
+        images: e.target.files,
+      }));
+    }
+    // Text/Boolean/Number
+    if (!e.target.files) {
+      SetParaForm((prevState) => ({
+        ...prevState,
+        [e.target.id]: boolean ?? e.target.value,
+      }));
+    }
+  }
+
     
-    const usersCollectionRef = collection(db, "insurance");
+    const usersCollectionRef = collection(db, "insurance");//referencia para colección insurance
 
       const createMessage = async () => {
         async function storeImage(image) {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
-        const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
-        const storageRef = ref(storage, filename);
-        const uploadTask = uploadBytesResumable(storageRef, image);
+        const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`; // nombre para tener referecia de imagen
+        const storageRef = ref(storage, filename); //referencia de storage
+        const uploadTask = uploadBytesResumable(storageRef, image); //cargar imagen a storage
         uploadTask.on(
           "state_changed",
           (snapshot) => {
@@ -95,12 +155,13 @@ export default function Insurance (){
     }
 
     const imgUrls = await Promise.all(
-      [images].map((image) => storeImage(image))
+      [...images].map((image) => storeImage(image))
     ).catch((error) => {
       setLoader(false);
       toast.error("Imagenes subido");
       return;
     });
+    //creación de documento en insurance con valores de formulario
     await addDoc(usersCollectionRef, {
        Nombre: newNombre,
        Apellido: newApellido,
@@ -140,22 +201,6 @@ export default function Insurance (){
         alert(error.message);
         setLoader(false);
       });
-    setNewNombre("");
-    setNewApellido("");
-    setNewEmail("");
-    setNewDireccion1 ("");
-    setNewDireccion2 ("");
-    setNewCuidad ("");
-    setNewProvencia ("");
-    setNewCodPostal ("");
-    setNewOpcion ("");
-    setNewIdioma ("");
-    setNewMessage("");
-    setNewTermino("");
-    setNewTitulo("");
-   // setImages({});
-
-     navigate("/PendingInsurance") // si todo sale bien, iremos a ruta en PendingInsurance
   };
 
 
@@ -164,6 +209,7 @@ export default function Insurance (){
         e.preventDefault();
 
       createMessage();
+       navigate("/PendingInsurance") // si todo sale bien, iremos a ruta en PendingInsurance
 
     };
     
@@ -177,27 +223,49 @@ return(
   <Form onSubmit={handleSubmit}>
    <InputGroup className="mb-3 text-center ps-5 pe-5 ">
       <InputGroup.Text >Nombre</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Nombre" onChange={(e) => setNewNombre(e.target.value)}/>
+      <Form.Control aria-label="Entra tu Nombre"
+      id="newNombre"
+               value={newNombre}
+              onChange={onChange}
+      />
     </InputGroup>
 
     <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Apellido</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setNewApellido(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido" 
+      id="newApellido"
+               value={newApellido}
+              onChange={onChange}
+      />
     </InputGroup>
 
        <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Fecha de Nacimiento</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setDateBirth(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido" 
+      id="dateBirth"
+               value={dateBirth}
+              onChange={onChange}
+      />
+      
     </InputGroup>
 
        <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Numero de Telefono</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setTelNo(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido"
+            id="telNo"
+               value={telNo}
+              onChange={onChange}
+      />
+      
     </InputGroup>
 
       <Form.Group className="mb-3 text-center ps-5 pe-5" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
-        <Form.Control type="email" placeholder="Entra tu email" onChange={(e) => setNewEmail(e.target.value)}/>
+        <Form.Control type="email" placeholder="Entra tu email" 
+              id="newEmail"
+               value={newEmail}
+              onChange={onChange}
+      />
         <Form.Text className="text-muted">
           No revelamos Email de nuestra clientes.
         </Form.Text>
@@ -205,27 +273,52 @@ return(
        
             <Form.Group className="mb-3 text-center ps-5 pe-5" controlId="formGridAddress1">
         <Form.Label>Direcion 1</Form.Label>
-        <Form.Control placeholder="La calle" onChange={(e) => setNewDireccion1(e.target.value)} />
+        <Form.Control placeholder="La calle"
+              id="newDireccion1"
+               value={newDireccion1}
+              onChange={onChange}
+      />
       </Form.Group>
 
       <Form.Group className="mb-3 text-center ps-5 pe-5" controlId="formGridAddress2">
         <Form.Label>Direccion 2</Form.Label>
-        <Form.Control placeholder="Apartmento, estudio, planta, ..." onChange={(e) => setNewDireccion2(e.target.value)}/>
+        <Form.Control placeholder="Apartmento, estudio, planta, ..." 
+              id="newDireccion2"
+               value={newDireccion2}
+              onChange={onChange}
+      />
       </Form.Group>
 
       <Row className="mb-3 text-center ps-5 pe-5">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>Cuidad</Form.Label>
-          <Form.Control placeholder="Cuidad" onChange={(e) => setNewCuidad(e.target.value)}/>
+          <Form.Control placeholder="Cuidad"
+                id="newCuidad"
+               value={newCuidad}
+              onChange={onChange}
+      />
         </Form.Group>
+
+
         <Form.Group className="text-center " as={Col} controlId="formGridState">
           <Form.Label>Provencia</Form.Label>
-          <Form.Control  placeholder="Provencia" onChange={(e) => setNewProvencia(e.target.value)}/>
+          <Form.Control  placeholder="Provencia"
+
+               id="newProvencia"
+               value={newProvencia}
+              onChange={onChange}
+      />
         </Form.Group>
+
 
         <Form.Group className="text-center" as={Col} controlId="formGridZip">
           <Form.Label>Codigo Postal</Form.Label>
-          <Form.Control placeholder="Codigo Postal" onChange={(e) => setNewCodPostal(e.target.value)}/>
+          <Form.Control placeholder="Codigo Postal" 
+          
+               id="newCodPostal"
+               value={newCodPostal}
+              onChange={onChange}
+          />
         </Form.Group>
       </Row>
 
@@ -234,11 +327,11 @@ return(
 
               <Form.Group className="ps-5 pe-5" controlId="formGridState">
           <Form.Label>¿El tomador es el mismo que propietario y conductor?</Form.Label>
-          <Form.Select defaultValue="..." onChange={(e) => setNewOpcion(e.target.value)}>
+          <Form.Select defaultValue="..." id="newOpcion" value={newOpcion} onChange={onChange}>
+        
           <option>....</option>
           <option>SI</option>
           <option>NO</option>
-     
           </Form.Select>
         </Form.Group>
 
@@ -246,9 +339,9 @@ return(
 
 
 
-                   <Form.Group className="ps-5 pe-5" controlId="formGridState">
+          <Form.Group className="ps-5 pe-5" controlId="formGridState">
           <Form.Label>Tipo seguro a contratar</Form.Label>
-          <Form.Select defaultValue="..." onChange={(e) => setTipo(e.target.value)}>
+          <Form.Select defaultValue="..."  id="tipo" value={tipo} onChange={onChange}>
           <option>....</option>
           <option>Todo a riesgo sin franquicia</option>
           <option>Todo a riesgo con franquicia</option>
@@ -266,18 +359,30 @@ return(
        <h2 className="mb-3 text-center ps-5 pe-5"> Discripcion Vehiculo</h2>
                 <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Marca de coche</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setMarca(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido"
+       id="marca"
+               value={marca}
+              onChange={onChange}
+          />
     </InputGroup>
 
      <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Modelo de Coche</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setModelo(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido" 
+             id="modelo"
+               value={modelo}
+              onChange={onChange}
+          />
     </InputGroup>
 
 
      <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Matricula de Coche</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setMatricula(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido"
+             id="matricula"
+               value={matricula}
+              onChange={onChange}
+          />
     </InputGroup>
 
        </div>
@@ -286,18 +391,30 @@ return(
     <div>
     <h2 className="mb-3 text-center ps-5 pe-5"> Historia Bonificacion</h2>
          <InputGroup className="mb-3 text-center ps-5 pe-5">
-      <InputGroup.Text>Companie</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setCompania(e.target.value)} />
+      <InputGroup.Text>Compania</InputGroup.Text>
+      <Form.Control aria-label="Entra tu Apellido"
+             id="compania"
+               value={compania}
+              onChange={onChange}
+          />
     </InputGroup>
 
      <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Poliza</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setPoliza(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido"
+             id="poliza"
+               value={poliza}
+              onChange={onChange}
+          />
     </InputGroup>
 
      <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Fecha Efecto de seguro</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setFechaEffecto(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido"
+             id="fechaEffecto"
+               value={fechaEffecto}
+              onChange={onChange}
+          />
     </InputGroup>
     
     </div>
@@ -306,26 +423,41 @@ return(
     <h2 className="mb-3 text-center ps-5 pe-5"> Cuenta Bancaria</h2>
          <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Nombre de Banco</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setBanco(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido"
+             id="banco"
+               value={banco}
+              onChange={onChange}
+          />
     </InputGroup>
 
      <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Numero de cuenta  </InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setcuenta(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido" 
+             id="cuenta"
+               value={cuenta}
+              onChange={onChange}
+          />
     </InputGroup>
 
      <InputGroup className="mb-3 text-center ps-5 pe-5">
       <InputGroup.Text>Nombre de persona que tiene la cuenta</InputGroup.Text>
-      <Form.Control aria-label="Entra tu Apellido" onChange={(e) => setNombreBanco(e.target.value)} />
+      <Form.Control aria-label="Entra tu Apellido" 
+             id="nombrBanco"
+               value={nombrBanco}
+              onChange={onChange}
+          />
     </InputGroup>
-    
     </div>
 
 
 
           <Form.Group className="ps-5 pe-5" controlId="formGridState">
           <Form.Label>Seleciona una idioma para comunicar contigo</Form.Label>
-          <Form.Select defaultValue="..." onChange={(e) => setNewIdioma(e.target.value)}>
+          <Form.Select defaultValue="..."
+                 id="newIdioma"
+               value={newIdioma}
+              onChange={onChange}
+          >
           <option>....</option>
           <option>Espanol</option>
           <option>Ingles</option>
@@ -338,12 +470,20 @@ return(
 
          <InputGroup className="mt-5 mb-4 pe-5 ps-5">
         <InputGroup.Text>Escribir tu Titulo/Referencia</InputGroup.Text>
-        <Form.Control as="textarea" aria-label="Escribir tu comentario" onChange={(e) => setNewTitulo(e.target.value)} />
+        <Form.Control as="textarea" aria-label="Escribir tu comentario"
+               id="newTitulo"
+               value={newTitulo}
+              onChange={onChange}
+          />
       </InputGroup>
 
        <InputGroup className="mt-5 mb-4 pe-5 ps-5">
         <InputGroup.Text>Escribir tu Comentario</InputGroup.Text>
-        <Form.Control as="textarea" aria-label="Escribir tu comentario" onChange={(e) => setNewMessage(e.target.value)} />
+        <Form.Control as="textarea" aria-label="Escribir tu comentario" 
+               id="newMessage"
+               value={newMessage}
+              onChange={onChange}
+          />
       </InputGroup>
 
       
@@ -355,7 +495,8 @@ return(
           </p>
           <input
             type="file"
-            onChange={(e) => setImages(e.target.value)}
+            id="images"
+            onChange={onChange}
             accept=".jpg,.png,.jpeg"
             multiple
             required
@@ -371,7 +512,11 @@ return(
        <Form.Label >
           He leido las terminos y condiciones  
           </Form.Label>
-        <Form.Check type="checkbox" label="Acepto los terminos y condiciones " onChange={(e) => setNewTermino(e.target.value)}/>
+        <Form.Check type="checkbox" label="Acepto los terminos y condiciones " 
+               id="newTermino"
+               value={newTermino}
+              onChange={onChange}
+          />
       </Form.Group>
 
       <div className="text-center">

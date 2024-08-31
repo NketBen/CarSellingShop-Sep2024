@@ -8,13 +8,13 @@ import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { toast } from 'react-toastify';
 
-
+// para tener listas de todos piezas en almacen
 export default function Almacen() {
   const [almacens, setAlmacens] = useState([]);
   const navigate = useNavigate();
-  const almacenColledctionRef = collection(db, "almacen");
+  const almacenColledctionRef = collection(db, "almacen");// referencia de almacen coleccion
 
-
+// se hacer snapshot para tener todos en amlacen coleccion
   useEffect(() => {
     const unsuscribe = onSnapshot(almacenColledctionRef, (snapshot) => {
       setAlmacens(
@@ -29,7 +29,7 @@ export default function Almacen() {
     };
   }, [almacenColledctionRef]);
 
-  const deletealmacen = async (id) => {
+  const deletealmacen = async (id) => { // para quitar un lista
     const userDoc = doc(db, "almacen", id);
     await deleteDoc(userDoc)
       .then(() => toast.success("pieza eliminada correctamente👍")) 
@@ -37,7 +37,7 @@ export default function Almacen() {
   };
   
   return (
-    <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
+    <div className="bg-slate-400">
       <nav className="mt-3 ps-4">
         
         <button
@@ -52,7 +52,7 @@ export default function Almacen() {
       <h2 className="text-center">Listas de todos orden de trabajos </h2>
 
       <ul>
-        {almacens.map((almacen) => (
+        {almacens.map((almacen) => ( //se recurre todos en almacen y se monstrar cada una en una lista la lista esta enlazado a OpenAlmacen
           <li
             key={almacen.id}
             className="mb-5 mt-3 bg-clip-border p-6 border-4 border-violet-300 border-dashed"

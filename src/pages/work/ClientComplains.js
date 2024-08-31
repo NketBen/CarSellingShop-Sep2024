@@ -8,12 +8,13 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-
+//listas de todos quejas y consultas 
 export default function ClientComplains() {
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
   const messageCollectionRef = collection(db, "message");
 
+  // se hace copia instantenia para tener todos valores y luego montrarlo
   useEffect(() => {
     const unsuscribe = onSnapshot(messageCollectionRef, (snapshot) => {
       setMessages(

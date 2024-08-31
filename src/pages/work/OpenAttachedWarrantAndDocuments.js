@@ -13,9 +13,8 @@ import "swiper/css/bundle";
 
 import { getAuth } from "firebase/auth";
 
-
-// componente para abrir imagenes adjuntados a CompletedWork
-export default function OpenAttachedDocument() {
+// componente para abrir imagenes adjuntados a gestor de garantias y documentaciones
+export default function OpenAttachedWarrantAndDocuments() {
   const auth = getAuth();
   const params = useParams();
   const [item, setItem] = useState(null);
@@ -25,10 +24,10 @@ export default function OpenAttachedDocument() {
   const navigate = useNavigate();
   SwiperCore.use([Autoplay, Navigation, Pagination]);
  
-//tener documento que se busca mediante id que viene useParam de router
+// tener documento que se busca mediante id que viene useParam de router
   useEffect(() => {
     async function getItem() {
-      const docRef = doc(db, "workClosed", params.workId); // tener referencia de coleccion workClosed
+      const docRef = doc(db, "warrant", params.warrantId);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setItem(docSnap.data());
@@ -37,61 +36,52 @@ export default function OpenAttachedDocument() {
       }
     }
     getItem();
-  }, [params.workId]);
+  }, [params.warrantId]);
 
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner />;//cuando esta cargando se utiliza componente spinner
   }
   return (
     <div>
-    <nav>
-        <div>
+<nav>
+  <div>
         <button
           onClick={() => {
-            navigate("/CompletedWork");
+            navigate(`/open-warrant-and-documentsList/${params.warrantId}`);//para volver a este documento que abrió
           }}
-          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-20 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
+          className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-40 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
         >
           Back
         </button>
       </div>
-
-    </nav>
-
+</nav>
     
     <main>
-     {item.imageUrl? (
-      <Swiper
-          slidesPerView={1} // abrimos imagenes en swipers
+  
+        <Swiper
+          slidesPerView={1} //muestramos este imagenes en swiper
           navigation
           pagination={{ type: "progressbar" }}
           effect="fade"
           modules={[EffectFade]}
           autoplay={{ delay: 5000 }}
+          className="relative w-1/2 overflow-hidden h-[800px]"
         >
-          {item.imageUrl.map((url, index) => (
+          {item.Images.map((url, index) => (
             <SwiperSlide key={index}>
               <div
-                className="relative w-full overflow-hidden h-[600px]"
+                className="relative w-full overflow-hidden h-[800px]"
                 style={{
-                  background: `url(${item.imageUrl[index]}) center no-repeat`,
+                  background: `url(${item.Images[index]}) center no-repeat`,
                   backgroundSize: "contain",
                 }}
               ></div>
             </SwiperSlide>
           ))}
         </Swiper>
-       
-     ): "No imagen Adjuntado" }
-        
-
-
-
 
     </main>
     </div>
   );
 }
-
-

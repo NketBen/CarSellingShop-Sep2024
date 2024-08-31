@@ -12,7 +12,7 @@ import Form from "react-bootstrap/Form";
 import { getAuth} from "firebase/auth";
 import StaffNavBar from "./StaffNavBar";
 
-
+//componente para abrir y actualizar piezas en almacen
 export default function OpenAlmacen() {
   const [works, setWorks] = useState([]);
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ export default function OpenAlmacen() {
   const [quantityToAdd, setQuantityToAdd] = useState();
  const auth = getAuth();
 
+// tener en almacen coleccion este pieza mediante useParam
   useEffect(() => {
     async function fetchData() {
       const docRef = doc(db, "almacen", params.almacenId);
@@ -37,21 +38,19 @@ export default function OpenAlmacen() {
     fetchData();
   }, [params.almacenId]); 
   
-// Funcion para cacular suma de piezas
+
   function handleSubmit(e) {
     e.preventDefault();
     if (quantityToAdd === 0) {
-      return toast.error("No has puesto nada en campo de entrada");
+      return toast.error("No has puesto nada en campo de entrada"); 
     }
     
-  
-    
-  
+
     const workDoc = doc(db, "almacen", params.almacenId);
     updateDoc(workDoc, {
-        CantidadDePiezas:(parseInt(works.CantidadDePiezas) + parseInt(quantityToAdd)),
-        storeTime: serverTimestamp(),
-        userRef: auth.currentUser.uid,
+        CantidadDePiezas:(parseInt(works.CantidadDePiezas) + parseInt(quantityToAdd)),//para cacular suma de piezas. Si se poner una de los valores en negativo se resta
+        storeTime: serverTimestamp(), //cuando se actualizó
+        userRef: auth.currentUser.uid, // usuario que hice actualización
 
           
     })
@@ -155,7 +154,7 @@ export default function OpenAlmacen() {
           
         className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
       >
-        Actualizar ccantidad de Piezas en Almacen
+        Actualizar cantidad de Piezas en Almacen
       </Button>
       <br />
     </div>

@@ -27,6 +27,7 @@ import {
 import { db } from "../../firebase";
 import { useNavigate, useParams } from "react-router-dom";
 
+//componente para poder adjuntar imagenes en tareas 
 export default function Document() {
   const navigate = useNavigate();
   const auth = getAuth();
@@ -81,8 +82,8 @@ export default function Document() {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
         const filenameDoc = `${auth.currentUser.uid}-${image.nameDoc}-${uuidv4()}`;
-        const storageRef = ref(storage, filenameDoc);
-        const uploadTask = uploadBytesResumable(storageRef, image);
+        const storageRef = ref(storage, filenameDoc);//referencia de storage
+        const uploadTask = uploadBytesResumable(storageRef, image);//cargar imagen a storage
         uploadTask.on(
           "state_changed",
           (snapshot) => {
@@ -100,7 +101,7 @@ export default function Document() {
             reject(error);
           },
           () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {//tener url de imagenes
               resolve(downloadURL);
             });
           }
@@ -112,21 +113,21 @@ export default function Document() {
       [...images].map((image) => storeImage(image))
     ).catch((error) => {
       setLoading(false);
-      toast.error("Imagenes subido");
+      toast.error("Imagenes no se ha subido");
       return;
     });
 
-        const paraFormCopy = {
+        const paraFormCopy = {// asignar formulario y imagen 
       ...paraForm,
       Images,
     };
     delete paraFormCopy.images;
 
     delete paraFormCopy.images;
-    const docRef = doc(db, "work", params.workId);
+    const docRef = doc(db, "work", params.workId); //referencia para poder actualizar
 
-    await updateDoc(docRef, paraFormCopy);
-    //const docRef = await addDoc(collection(db, "work"), paraFormCopy);
+    await updateDoc(docRef, paraFormCopy);// actualizar documentos 
+    
     setLoading(false);
     toast.success("Se ha creado listado de item correctamente");
     navigate(`/close-work/${params.workId}`);

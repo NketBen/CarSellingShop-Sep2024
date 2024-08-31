@@ -6,13 +6,13 @@ import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import StaffNavBar from "./StaffNavBar";
 
-
+// listas de todos ordenes de trajos en coleccion 
 export default function Worklist() {
   const [works, setWorks] = useState([]);
   const navigate = useNavigate();
   const workColledctionRef = collection(db, "work");
 
-
+// se hacer copia instantenea para tener copia de coleccion work
   useEffect(() => {
     const unsuscribe = onSnapshot(workColledctionRef, (snapshot) => {
       setWorks(
@@ -27,6 +27,7 @@ export default function Worklist() {
     };
   }, [workColledctionRef]);
 
+// para poder borrar en worklist
   const deleteWork = async (id) => {
     const userDoc = doc(db, "work", id);
     await deleteDoc(userDoc)

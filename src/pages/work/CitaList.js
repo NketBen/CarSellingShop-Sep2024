@@ -90,7 +90,15 @@ export default function CitaList() {
                 {" "}
                 Delete citaList
               </button>
-
+                        <button
+              onClick={() => {
+                navigate(`/cita-reply/${citaList.id}`);
+               
+              }}
+              className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
+            >
+              Contestar Cliente
+            </button>
             </div>
             <br />
           </li>

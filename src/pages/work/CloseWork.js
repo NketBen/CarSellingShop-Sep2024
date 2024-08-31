@@ -26,7 +26,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { EffectFade, Autoplay, Navigation, Pagination,} from "swiper";
 import "swiper/css/bundle";
 
-
+//componente que cerrar Orden de trabajo.
+ 
 function CloseWork() {
   let today=new Date();
   const [name, setName] = useState();
@@ -55,13 +56,10 @@ function CloseWork() {
   const auth = getAuth();
 
   const navigate = useNavigate();
-  const workCollectionRef = collection(db, "workClosed");
+  const workCollectionRef = collection(db, "workClosed"); //referencias de coleccion de trabajos cerrados
   const params = useParams();
   
-
-
-
-
+//primero se busca este documento en coleccion work utilizando useParam
   useEffect(() => {
     async function fetchData() {
      
@@ -104,7 +102,7 @@ function CloseWork() {
   }, [params.workId]);
 
 
-
+// crearmos funcion que crear documento en workclosed coleccion
      const createWork = async () => {
        await addDoc(workCollectionRef, {
          id: id,
@@ -150,11 +148,11 @@ function CloseWork() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (commentsTecnico === "") {
+    if (commentsTecnico === "") { // para hacersubmit, debemos tener campo commentsTecnico (commentarion tecnico) rellenado
       return navigate("/Worklist");
     }
 
-    const workDoc = doc(db, "work", id);
+    const workDoc = doc(db, "work", id); //proceso de cerrar orden de trabajo: primero actualizar colecion work con informaciones de trabajo
     updateDoc(workDoc, {
       Tareas,
       Emergencia,
@@ -171,12 +169,12 @@ function CloseWork() {
 
 
 
-      createWork();
+      createWork(); // segundo es crear en coleccion workClosed los valores actualizado
 
-       deleteWork();
+       deleteWork(); // luego se quita este documento en coleccion work 
         
        
-        navigate("/CompletedWork");
+        navigate("/CompletedWork"); //finalment navegamos a CompletedWork
         alert("Orden Cerrado correctamente 👍"); 
       })
       .catch((error) => {
@@ -356,7 +354,7 @@ function CloseWork() {
 
 
 
-          {imgUrls ? (
+          {imgUrls ? ( // si tenemos imagenes adjuntado se montrar aqui
              <div>
   
         <Swiper

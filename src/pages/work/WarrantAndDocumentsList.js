@@ -9,15 +9,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { toast } from "react-toastify";
 import StaffNavBar from "./StaffNavBar";
 
-// 
-export default function PendingFinance() {
+//componente para poder visualizar todoslos  guardado documentos en formato de imagen
+export default function WarrantAndDocumentsList() {
   const [works, setWorks] = useState([]);
   const navigate = useNavigate();
-  const financeRef = collection(db, "finance"); //referencia a coleccion finance
+  const warrantRef = collection(db, "warrant");//hace referencia de colecion warrant
 
+  //Copia instantenea de coleccion warrant
   useEffect(() => {
-    //hacemos copia instantenea para tener copia instantenea exacta en cuanto se cambia algo en la referencia
-    const unsuscribe = onSnapshot(financeRef, (snapshot) => {
+    const unsuscribe = onSnapshot(warrantRef, (snapshot) => {
       setWorks(
         snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -28,20 +28,19 @@ export default function PendingFinance() {
     return () => {
       unsuscribe();
     };
-  }, [financeRef]);
+  }, [warrantRef]);// warrantRef es dependencia
 
-  //funciones para borrar
   const deleteWork = async (id) => {
-    const userDoc = doc(db, "finance", id);
+    const userDoc = doc(db, "warrant", id);
     await deleteDoc(userDoc)
       .then(() => toast.success(" Orden de trabajo eliminado correctamente👍"))
       .catch((error) => toast.error("No se encountra el documento!"));
   };
 
   return (
-    <div className="bg-slate-400">
+    <div className="bg-slate-400 flex-1 ">
       <nav className="mt-3 ps-4">
-<StaffNavBar/>
+      <StaffNavBar className="flex"/>
         <button
           onClick={() => {
             navigate("/StaffHome");
@@ -60,53 +59,55 @@ export default function PendingFinance() {
           Mis Trabajos
         </button>
       </nav>
-      <h2 className="text-center">Listas de todos Solicitudes de Financiero </h2>
+      <h2 className="text-center">Listas de todos Solicitudes de Seguros </h2>
 
       <ul>
-        {works.map((finance) => (
+        {works.map((warrant) => (
           <li
-            key={finance.id}
+            key={warrant.id}
             className="mb-5 mt-3 bg-clip-border p-6 border-4 border-violet-300 border-dashed"
           >
-          <Link className="contents" to={`/open-finance/${finance.id}`}>
-            <h3> Solicitante: {finance.data.Oldname}  con telefono: {finance.data.TelNo} y email: {finance.data.email}</h3>
-            Car Tipo : {finance.type} <b /> <br />
-            Nombre de Coche: {finance.data.name} <br />
-            Dueños Anteriores {finance.data.previousOwners} <br />
-            ITV: {finance.data.MOT} <br />
-            Asientos en el coche: {finance.data.seats} <br />
-            Discripcion de Financiero: {finance.data.discription} <br />
-            Dirección de Cliente: {finance.data.address} <br />
-            Años en Direccion anterior: {finance.data.yearInAddress} <br />
-            Dirección de anteriores Cliente: {finance.data.oldAddress} <br />
-            Estado de Vivienda: {finance.data.residencialStatus} <br />
-            Empresa de Trabajo de Cliente: {finance.data.currentEmployment} <br />
-            Años que cliente esta en este Empresar: {finance.data.yearsInEmployment} <br />
-            Trabajo anteriores de cliente: {finance.data.oldEmployment} <br />
-            cliente numero de telefono: {finance.data.TelNo} <br />
-            cliente numero Banco: {finance.data.bankName}<br/>
-            Direccion de Banco: {finance.data.bankAddress} <br />
-            Nombre de duena de cuenta: {finance.data.accountHolderName} <br />
-            Fecha para Terminar: {finance.data.accountNumber} <br/>
-            Imagenes Adjuntados: {(finance.data.imgAdjuntado)? (finance.data.imgAdjuntado) : "NO imagen adjuntado"} <br/>
+          <Link className="contents" to={`/open-warrant-and-documentsList/${warrant.id}`}>
+            <h3> Solicitante: {warrant.data.newApellido}  con telefono: {warrant.data.telNo} y email: {warrant.data.email}</h3>
+            Nombre : {warrant.data.newNombre} <b /> <br />
+            Apellido: {warrant.data.newApellido} <br />
+            Numero de Telefono: {warrant.data.telNo} <br />
+            Coreo Electronico: {warrant.data.email} <br />
+
+            <h2 className="text-left ps-5 mt-3">Informacion de coche</h2>
+
+            Marca: {warrant.data.marca} <br />
+            Modelo: {warrant.data.modelo} <br />
+            Matricula: {warrant.data.matricula} <br />
+
+            <h2 className="text-left ps-5 mt-3">Informacion de Documentacion</h2>
+
+            Compania: {warrant.data.nameDoc} <br />
+            Poliza: {warrant.data.descriptionDoc} <br />
+            Fecha Efectivo: {warrant.data.tipo} <br />
             
 
+         <h2 className="text-left ps-5 mt-3">Imagenes Adjuntado</h2>
+
+            Imagenes Adjuntado:  {(warrant.data.imgAdjuntado)? (warrant.data.imgAdjuntado) : "No imagen adjuntado"} <br/>
+            
 
             </Link>
                
-             <button
+            <div>
+
+              <button
                 onClick={() => {
-                  navigate(`/open-attached-Finance/${finance.id}`);
+                  navigate(`/open-attached-warrant-andDocuments/${warrant.id}`);
                 }}
                 className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
               >
-              Abre Documentos Adjuntados 
+                  Abre Documentos Adjuntados 
               </button>
-            <br />
-            <div>
+
               <button
                 onClick={() => {
-                  deleteWork(finance.id);
+                  deleteWork(warrant.id);
                 }}
                 className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
               >
@@ -115,11 +116,11 @@ export default function PendingFinance() {
               </button>
               <button
                 onClick={() => {
-                  navigate(`/open-finance/${finance.id}`);
+                  navigate(`/open-warrant-and-documentsList/${warrant.id}`);
                 }}
                 className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
               >
-                Abre Expidiente Financiero de cliente
+                Abre Expidiente Seguro del cliente
               </button>
             </div>
             <br />

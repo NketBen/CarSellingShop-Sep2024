@@ -22,6 +22,7 @@ import { useEffect } from "react";
 import ProfileInfo from "../../profileFoto/ProfileInfo";
 import StaffNavBar from "./StaffNavBar";
 
+//Perfil de usuario en staff
 export default function MyStaffProfile() {
   const auth = getAuth();
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export default function MyStaffProfile() {
   async function onSubmit() {
     try {
       if (auth.currentUser.displayName !== name) {
-        //update display name in firebase auth
+        //actualizar nombre de usuario 
         await updateProfile(auth.currentUser, {
           displayName: name,
         });
@@ -65,12 +66,14 @@ export default function MyStaffProfile() {
       toast.error("Se ha producido un error, perfil no actualizado");
     }
   }
+
+  //hacemos consulta para tener tareas assignado a usuario actual para monstrarlo en este componente.
   useEffect(() => {
     async function getUserItem() {
       const itemRef = collection(db, "work");
       const q = query(
         itemRef,
-        where("userRef", "==", auth.currentUser.uid),
+        where("userRef", "==", auth.currentUser.uid), //clave es aqui
         orderBy("timestamp", "desc")
       );
       
@@ -147,8 +150,6 @@ export default function MyStaffProfile() {
         </div>
         <div className="w-full md:w-[50%] mt-6 px-3">
           <form>
-            {/* Name Input */}
-
             <input
               type="text"
               id="name"
@@ -159,8 +160,6 @@ export default function MyStaffProfile() {
                 changeDetail && "bg-red-200 focus:bg-red-200"
               }`}
             />
-
-            {/* Email Input */}
 
             <input
               type="email"

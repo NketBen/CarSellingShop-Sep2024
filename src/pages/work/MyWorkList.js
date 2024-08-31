@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import {useAuth} from "../../profileFoto/StorageInfo";
 import Nav from 'react-bootstrap/Nav';
 
-
+// lista de tareas para el usuario corriente
 export default function MyWorkList() {
   const auth = getAuth();
   const navigate = useNavigate();
@@ -25,8 +25,8 @@ export default function MyWorkList() {
        if (currentUser?.displayName) {
       setName(currentUser.displayName);
     }
-    const workColledctionRef=collection(db,'work')
-    const unsuscribe = onSnapshot(workColledctionRef, snapshot => {
+    const workColledctionRef=collection(db,'work') //referencia de coleccion work
+    const unsuscribe = onSnapshot(workColledctionRef, snapshot => { // hacer copia instantenea en coleccion de work
          setWorks(snapshot.docs.map(doc=>({
             id:doc.id,
             data: doc.data()
@@ -57,9 +57,9 @@ export default function MyWorkList() {
 
       <h2 className="text-2xl text-center font-semibold mb-6">Listas de Trabajos de {Name}</h2>
       {works.map((work, index) => {
-         if (work.data.userRef === auth.currentUser.uid) {
-           return (
-             <unsuscribe>
+         if (work.data.userRef === auth.currentUser.uid) { //condicionar que usuario inciado sesion  sea lo mismo que userRef para muestrar estos documentos
+           return (//si un documento no tienen userRef igual a usuario actual, no saldra aqui.
+             <unsuscribe> 
                <li
                  key={index}
                  className="bg-lime-100 shadow-lg shadow-indigo-500/50 px-8 m-8 border-gray-300 rounded transition duration-150 ease-in-out"

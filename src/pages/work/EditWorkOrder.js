@@ -17,6 +17,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { toast } from "react-toastify";
 import StaffNavBar from "./StaffNavBar";
 
+//funcióon para editar documento en colección work
 export default function Update() {
   const [works, setWorks] = useState([]);
   const [name, setName] = useState("");
@@ -29,6 +30,7 @@ export default function Update() {
   const navigate = useNavigate();
   const params = useParams();
 
+  // tener este documento que queremos actualizar
   useEffect(() => {
     async function fetchData() {
      
@@ -60,10 +62,10 @@ export default function Update() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (Tareas === "" || id === "") {
+    if (Tareas === "" || id === "") {//si  las dos campos estan vacia, no hacemos nada
       return;
     }
-    const workDoc = doc(db, "work", id);
+    const workDoc = doc(db, "work", id); // referencia de colección de work para poder actualizarlo
     updateDoc(workDoc, { Tareas, Emergencia, name, EstadoTrabajo })
       .then((response) => {
         toast.success(" work creado correctamente");
@@ -71,6 +73,7 @@ export default function Update() {
       .catch((error) => {
         alert(error.message);
       });
+       navigate(`/open-work-order/${params.workId}`);
   }
 
   const deleteWork = async (id) => {
@@ -80,7 +83,7 @@ export default function Update() {
       .catch((error) => toast.error("No se encuentra el documento 👍"));
   };
 
-  return (
+  return ( // lo de mas son formulario donde tendermos valores de documento para actualizarlo
     <div>
       <nav className="mt-3">
       <StaffNavBar/>

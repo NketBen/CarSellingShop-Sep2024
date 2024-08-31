@@ -21,7 +21,9 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useNavigate, useParams } from "react-router-dom";
 import StaffNavBar from "./StaffNavBar";
+import { toast } from "react-toastify";
 
+//componente para re-abrir Orden de trabajo despues de harber cerrado
 function ReAbreOT() {
   let today = new Date();
   const [name, setName] = useState();
@@ -49,15 +51,16 @@ function ReAbreOT() {
   const auth = getAuth();
 
   const navigate = useNavigate();
-  const workCollectionRef = collection(db, "work");
-  const params = useParams();
+  const workCollectionRef = collection(db, "work"); //referencia de coleccion de work
+  const params = useParams(); //useParams para poder tener id desde router
 
+//tener documento que queremos reabrir en coleccion workClosed
   useEffect(() => {
     async function fetchData() {
-      const docRef = doc(db, "workClosed", params.workClosedId);
-      const docSnap = await getDoc(docRef);
+      const docRef = doc(db, "workClosed", params.workClosedId); // referencia de coleccion  
+      const docSnap = await getDoc(docRef); //tener documemto con este coleccion
 
-      if (docSnap.exists()) {
+      if (docSnap.exists()) { // si este documento existe en base de datos, lo ponemos en nuestra react estados para tener accesso react.
         setWorks(docSnap.data());
         setName(docSnap.data().name);
         setEmergencia(docSnap.data().Emergencia);
@@ -82,13 +85,13 @@ function ReAbreOT() {
         setTimeStart(docSnap.data().startDate);
         setTimeFinish(docSnap.data().endDate);
       } else {
-        alert("No existe este documento en base de datos!");
+        toast.error("No existe este documento en base de datos!");
       }
     }
     fetchData();
   }, [params.workClosedId]);
 
-  const createWork = async () => {
+  const createWork = async () => {// funcion para crear documento en coleccion work. Se crear este coleccion antes de eliminarlo en workClosed
     await addDoc(workCollectionRef, {
       id: id,
       name: name,
@@ -114,27 +117,27 @@ function ReAbreOT() {
       imgUrls:imgUrls,
     })
       .then(() => {
-        alert("Se ha creado orden de trabajo correctamente👍");
+        toast.success("Se ha creado orden de trabajo correctamente👍");
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   };
 
   const deleteWork = async () => {
-    const userDoc = doc(db, "workClosed", id);
+    const userDoc = doc(db, "workClosed", id);// borrar documento en coleccion workClosed
     await deleteDoc(userDoc)
-      .then(() => alert("Tarea esta eliminada correctamente👍"))
-      .catch((error) => alert("No se encountra el documento!"));
+      .then(() => toast.success("Tarea esta eliminada correctamente👍"))
+      .catch((error) => toast.error("No se encountra el documento!"));
   };
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (commentsTecnico === "") {
-      return navigate("/Worklist");
+    if (commentsTecnico === "") { // es necesario de que trabajo se cierre con commentario tecnico para poder reabrirlo
+      return navigate("/CompletedWork");
     }
 
-    const workDoc = doc(db, "workClosed", id);
+    const workDoc = doc(db, "workClosed", id); //se puede modificar estes campos ante de reabrirlo
     updateDoc(workDoc, {
       Tareas,
       Emergencia,
@@ -150,17 +153,17 @@ function ReAbreOT() {
       .then((response) => {
       
 
-        createWork();
+        createWork(); // se crear en coleccion work
 
-        deleteWork();
+        deleteWork(); // se elimina en coleccion workClosed
        
 
         navigate("/Worklist");
 
-          alert("Orden Re-abierta correctamente 👍");
+          toast.success("Orden Re-abierta correctamente 👍");
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   }
 

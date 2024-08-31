@@ -21,27 +21,24 @@ import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import StaffNavBar from "./StaffNavBar";
 
+//componente que solo crear tareas con formularios que tiene
+// cada campo de entrada es una campo en colección work en Firestore.
+
 export default function CreateWorks() {
-  // const [newName, setNewName] = useState("");
-  // const [newDepart, setNewDepart] = useState("");
-  // const [newTarea, setNewTarea] = useState("");
-  // const [newForm, setNewForm] = useState("");
-  // const [estado, setEstado] = useState("");
-  // const [urgencia, setUrgencia] = useState("");
-  // const [creator, setCreator] =useState("");
+ 
    const workCollectionRef = collection(db, "work");
    const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [loading, setLoading] = useState(false);
-  //const[images, setImages]=useState([]);
+  
 
 const [paraForm, SetParaForm] = useState({
     
-    contracta: false,
-    address: "no contratada",
-    telNo:+34,
-    contractaName:"no contratada",
-    newName:"",
+contracta: false,
+address: "no contratada",
+telNo:+34,
+contractaName:"no contratada",
+newName:"",
 newDepart:"",
 newTarea:"",
 newForm:"",
@@ -53,19 +50,17 @@ images:{},
   });
 
   const {
-   // images,
-    address,
-    contracta,
-    telNo,
-    contractaName,
-    newName,
+ address,
+ contracta,
+ telNo,
+ contractaName,
+ newName,
 newDepart,
 newTarea,
 newForm,
 estado,
 urgencia,
 creator,
-
 images,
     } = paraForm;
 
@@ -73,6 +68,8 @@ images,
 
   const auth = getAuth();
   const navigate = useNavigate();
+
+  //funcion para coger eventos de campos de entradas
 
  function onChange(e) {
     let boolean = null;

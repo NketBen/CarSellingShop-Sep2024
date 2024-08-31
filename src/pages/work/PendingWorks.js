@@ -16,11 +16,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "../../components/Spinner";
 import StaffNavBar from "./StaffNavBar";
 
+//trabajos que aun no esta cerrados. 
 export default function PendingWorks() {
   const [works, setWorks] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  //este consulta filtra 30 ordenes con su campo EstadoTrabajo no puesto cerrado y hacer snapshot
   useEffect(() => {
     const workRef = collection(db, "work");
     const q = query(
@@ -37,7 +39,7 @@ export default function PendingWorks() {
         }))
       );
     });
-    //setWorks(works);
+ 
     setLoading(false);
     return () => {
       unsuscribe();
@@ -49,7 +51,7 @@ export default function PendingWorks() {
 
   const deleteWork = async (id) => {
     const userDoc = doc(db, "work", id);
-    await deleteDoc(userDoc)
+    await deleteDoc(userDoc) // se puede eliminar cada listada
       .then(() => alert("Tarea esta eliminada correctamente👍"))
       .catch((error) => alert("No se encountra el documento!"));
   };
@@ -75,7 +77,7 @@ export default function PendingWorks() {
         </h1>
         <div>
           <ul>
-            {works.map((work) => (
+            {works.map((work) => ( //map recurre cada tarea para luego poder muestra cada una seperado
               <li
                 key={work.id}
                 className="mb-5 mt-3 bg-clip-border p-6 border-4 border-violet-300 border-dashed"

@@ -5,9 +5,14 @@ import { db } from "../../firebase";
 import { getAuth } from "firebase/auth";
 import {
   collection,
- 
+  doc,
   addDoc,
- 
+ getDocs,
+ query,
+ where,
+ orderBy,
+ limit,
+ serverTimestamp
 } from "firebase/firestore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DatePicker from "react-datepicker";
@@ -15,7 +20,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
-import { useNavigate,  } from "react-router-dom";
+import { useNavigate, useParams  } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
@@ -27,20 +32,20 @@ export default function CitaPrevia() {
   const[reason, SetReason]= useState("");
   const[hora, SetHora]= useState("");
     const[email, setEmail]= useState("");
+  const [id, setId] = useState();
 
-
-  const almacenCollectionRef = collection(db, "cita");
+  const citaCollectionRef = collection(db, "cita");
 
 
 
   const auth = getAuth();
   const navigate = useNavigate();
-  
+  const params=useParams();
 
 //crear y subir cita a coleccion cita
 
   const creatStore = async () => {
-    await addDoc(almacenCollectionRef, {
+    await addDoc(citaCollectionRef, {
       Name: manName,
       Descripción: description,
       RazonCita:reason,
@@ -48,28 +53,65 @@ export default function CitaPrevia() {
       Email: email,
       dateStored: startDate.toString(),
       HoraCita: hora,
+      timestamp: serverTimestamp(),
       userRef: auth.currentUser.uid,
     })
       .then(() => {
-        toast.success("Se ha creado pieza en almacen correctamente👍");
+        toast.success("Se ha creado Cita  correctamente👍");
 
       })
       .catch((error) => {
         alert(error.message);
       });
-  
-  };
+ 
+      //       try {
+      //   //tener referencia de item
+       
+      //   // crear consulta
+       
+      //   const q = query(
+      //     citaCollectionRef,
+      //     where("userRef", "==", auth.currentUser.uid),
+      //     orderBy("timestamp", "desc"),
+      //     limit(1)
+      //   );
+      //   console.log(auth.currentUser.uid);
+
+      //   // executar este consulta
+      //   const querySnap = await getDocs(q);
+      //   const items = [];
+      //   querySnap.forEach((doc) => {
+      //     return items.push({
+      //       id: doc.id,
+      //       data: doc.data(),
+      //     });
+      //   });
+      //   setCita(items);
+      // } catch (error) {
+      //   alert("No se puede cargar documentos");
+      // }
+   
+   
+   };
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 if(startDate<new Date()){
     return toast.error("fecha elegido debe ser hoy o posterior");
 }
     creatStore();
-     navigate("/");
+
+     // navigate(`/open-cita-list/${params.citaListId}`) 
+     navigate("/OpenJustMyCita")
   };
 
-  
-  
+  //  useEffect(() => {
+   
+  // }, []);
+  //navegar a item subida
+ 
 
   return (
     <div>

@@ -7,7 +7,7 @@ import { doc, getDoc} from "firebase/firestore";
 
 
 
-
+//bara de navegacion para staff. Codndiciona a lo que puede ver usuario de staff
 
 export default function StaffNavBar () {
 
@@ -22,12 +22,14 @@ export default function StaffNavBar () {
   const [mywork, setMyWork]=useState("");
       
        const [almacenList, setAlmacenList]=useState("");
-         const [finance, setFinance]=useState("");
-         const [insurance, setInsurance]=useState("");
-           const [clientComplains, setClientComplains]=useState("");
-         const [pendingfinance, setPendingFinance]=useState("");
-          const [pendingInsurance, setPendingInsurance]=useState("");
-          const[cita,setCita]=useState("");
+       const [finance, setFinance]=useState("");
+       const [insurance, setInsurance]=useState("");
+       const [clientComplains, setClientComplains]=useState("");
+       const [pendingfinance, setPendingFinance]=useState("");
+       const [pendingInsurance, setPendingInsurance]=useState("");
+       const[cita,setCita]=useState("");
+       const[warrant, setWarrant]=useState("");
+       const[openwarrant, setOpenWarrant]=useState("");
 
 
   const location = useLocation();
@@ -61,21 +63,20 @@ export default function StaffNavBar () {
   if (login.rol==="gerente") {
         setStaffPerfil("Mi Perfil de trabajo");
         setInventario("Crear Inventario de piezas");
-        setCarInfo("Subir Informacion de ITV");
         setCreatWork("Crear Listas de Trabajo");
         setWorklist("Listas de Todos Ordenes de trabajos");
         setPending("Listas de tareas pendientes");
         setCompleted("Listas de tareas acabado");
         setMyWork("Mis Listas de tareas");
-       
         setAlmacenList("Abrir y Actualizar pieza")
-        
         setFinance("Peticiones Financieros de Clentes")
-        setPendingFinance("Listas de Peticiones Financieros de Clentes")
+        setPendingFinance("Listas de Peticiones Financieros")
         setInsurance("Peticiones Seguro de Clentes")
-         setPendingInsurance("Listas de Peticiones Seguros de Clentes")
-         setClientComplains("Quejas y consultas de clente ")
-         setCita("Citas Previa ")
+        setPendingInsurance("Listas de Peticiones Seguros")
+        setClientComplains("Quejas y consultas de clente ")
+        setCita("Citas Previa ")
+        setWarrant("Gestion Documento y Guarantias")
+        setOpenWarrant("Abrir Documento y Guarantias")
 
 
       } 
@@ -94,9 +95,11 @@ function getRol1(){
         setPending("Listas de tareas pendientes");
         setMyWork("Mis Listas de tareas");
         setInsurance("Peticiones Seguro de Clentes")
-         setPendingInsurance("Listas de Peticiones Seguros de Clentes")
-          setClientComplains("Quejas y consultas de clente ")
-           setCita("Citas Previa ")
+        setPendingInsurance("Listas de Peticiones Seguros")
+        setClientComplains("Quejas y consultas de clente ")
+        setCita("Citas Previa ")
+        setWarrant("Gestion Documento y Guarantias")
+        setOpenWarrant("Abrir Documento y Guarantias")
      
 
 
@@ -116,10 +119,12 @@ function getRol2(){
         setPending("Listas de tareas pendientes");
         setMyWork("Mis Listas de tareas");
         setFinance("Peticiones Financieros de Clentes")
-         setPendingFinance("Listas de Peticiones Financieros de Clentes")
-         setInsurance("Peticiones Seguro de Clentes")
-         setPendingInsurance("Listas de Peticiones Seguros de Clentes")
-          setCita("Citas Previa ")
+        setPendingFinance("Listas de Peticiones Financieros")
+        setInsurance("Peticiones Seguro de Clentes")
+        setPendingInsurance("Listas de Peticiones Seguros")
+        setCita("Citas Previa ")
+        setWarrant("Gestion Documento y Guarantias")
+        setOpenWarrant("Abrir Documento y Guarantias")
 
 
       }
@@ -133,14 +138,16 @@ getRol2()
 useEffect(()=>{
 function getRol3(){
     if (login.rol==="gestorventa") {
-        setStaffPerfil("Mi Perfil de trabajo");
+        setStaffPerfil("Mi Perfil");
         setCreatWork("Crear Listas de Trabajo");
         setPending("Listas de tareas pendientes");
         setMyWork("Mis Listas de tareas");
         setInventario("Crear Inventario de piezas");
         setFinance("Peticiones Financieros de Clentes")
         setAlmacenList("Abrir y Actualizar pieza")
-         setCita("Citas Previa ")
+        setCita("Citas Previa ")
+        setWarrant("Gestion Documento y Guarantias")
+        setOpenWarrant("Abrir Documento y Guarantias")
 
       } 
 }
@@ -153,16 +160,18 @@ getRol3()
 useEffect(()=>{
 function getRol4(){
           if (login.rol==="tecnico") {
-        setStaffPerfil("Mi Perfil de trabajo");
+        setStaffPerfil("Mi Perfil ");
         setCreatWork("Crear Listas de Trabajo");
         setPending("Listas de tareas pendientes");
         setMyWork("Mis Listas de tareas");
         setInventario("Crear Inventario de piezas");
         setAlmacenList("Abrir y Actualizar pieza")
         setInsurance("Peticiones Seguro de Clentes")
-         setPendingInsurance("Listas de Peticiones Seguros de Clentes")
-          setClientComplains("Quejas y consultas de clente ")
-           setCita("Citas Previa ")
+        setPendingInsurance("Listas de Peticiones Seguros")
+        setClientComplains("Quejas y consultas de clente ")
+        setCita("Citas Previa ")
+        setWarrant("Gestion Documento y Guarantias")
+        setOpenWarrant("Abrir Documento y Guarantias")
         
 
       } 
@@ -176,23 +185,22 @@ getRol4()
 useEffect(()=>{
 function getRol5(){
  if (login.rol==="director") {
-        setStaffPerfil("Mi Perfil de trabajo");
+        setStaffPerfil("Mi Perfil ");
         setInventario("Crear Inventario de piezas");
-        setCarInfo("Subir Informacion de ITV");
         setCreatWork("Crear Listas de Trabajo");
         setWorklist("Listas de Todos Ordenes de trabajos");
         setPending("Listas de tareas pendientes");
         setCompleted("Listas de tareas acabado");
         setMyWork("Mis Listas de tareas");
-       
         setAlmacenList("Abrir y Actualizar pieza")
-        
         setFinance("Peticiones Financieros de Clentes")
-         setPendingFinance("Listas de Peticiones Financieros de Clentes")
-         setInsurance("Peticiones Seguro de Clentes")
-         setPendingInsurance("Listas de Peticiones Seguros de Clentes")
-          setClientComplains("Quejas y consultas de clente ")
-           setCita("Citas Previa ")
+        setPendingFinance("Listas de Peticiones Financieros")
+        setInsurance("Peticiones Seguro de Clentes")
+        setPendingInsurance("Listas de Peticiones Seguros")
+        setClientComplains("Quejas y consultas de clente ")
+        setCita("Citas Previa ")
+        setWarrant("Gestion Documento y Guarantias")
+        setOpenWarrant("Abrir Documento y Guarantias")
 
 
       } 
@@ -206,11 +214,11 @@ getRol5()
     }
   }
   return (
-    <div className="bg-white border-b shadow-sm sticky top-0 z-40 mr-4">
-      <header className="flex justify-between items-center px-3 max-w-8xl mx-auto">
+    <div className="bg-white border-b shadow-sm sticky top-0 z-40 mr-4 ">
+      <header className="flex justify-between items-center px-3 max-w-8xl mx-auto ">
 
         <div>
-          <ul className="flex space-x-10">
+          <ul className="flex ">
 
           <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
@@ -358,6 +366,24 @@ getRol5()
               onClick={() => navigate("/PendingInsurance")}
             >
               {pendingInsurance}
+            </li>
+
+           <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-4 ${
+                gotoRoute("/WarrantAndDocuments") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/WarrantAndDocuments")}
+            >
+              {warrant}
+            </li>
+
+                     <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-4 ${
+                gotoRoute("/WarrantAndDocumentsList") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/WarrantAndDocumentsList")}
+            >
+              {openwarrant}
             </li>
 
           </ul>

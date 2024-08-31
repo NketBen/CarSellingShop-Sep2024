@@ -17,18 +17,22 @@ import { db } from "../../firebase";
 import { FcHome } from "react-icons/fc";
 import { useEffect } from "react";
 import StaffNavBar from "./StaffNavBar";
+
+// StaffHome is pagina principal de Staff
 export default function StaffHome() {
   const auth = getAuth();
   const navigate = useNavigate();
   const [works, setWorks] = useState(null);
   const [loading, setLoading] = useState(true);
    
-  
+  // cuando se pulsa sobre logOut, llamamos a signOut de firebase
   function LogOut() {
     auth.signOut();
     navigate("/");
   }
   
+  //En Este useEffect hacemos consulta para tener tareas de usuario actual
+  // nota: userRef is uid de cada usuario que se ha puesto en work 
  useEffect(() => {
     async function getUserWork() {
       const workRef = collection(db, "work");
@@ -53,13 +57,15 @@ export default function StaffHome() {
     }
     
     getUserWork();
-  }, [auth.currentUser.uid]); 
+  }, [auth.currentUser.uid]); // useEffect tiene dependencia auth.currentUser.uid
 
- console.log(works)
 
+// funcion para borrar tarea
   async function Delete(workID) {
     if (window.confirm("¿Estas seguro que quires Eliminar works?")) {
       await deleteDoc(doc(db, "work", workID));
+
+
       const updatedwork = works.filter(
         (work) => work.id !== workID
       );
@@ -67,6 +73,8 @@ export default function StaffHome() {
       toast.success(" work completamente Eliminado");
     }
   }
+
+  //funcion para Editar solo nos enviar a Componente EditWorkOrder.js
   function Edit(workID) {
     navigate(`/edit-work/${workID}`);
   }
@@ -122,8 +130,8 @@ export default function StaffHome() {
                   >
                     <Link
                       className="contents"
-                      to={`/open-work-order/${work.id}`}
-                    >
+                      to={`/open-work-order/${work.id}`}//las listas se vincula a componente OpenWorkOrder de tal que cuando pulsa contenido de ello, se abre en OpenWorkOrder.js 
+                    >                                    
                       ID: {work.id} <br />
                       name: {work.data.name} <br />
                       Creador de OT: {work.data.Creator} <br />

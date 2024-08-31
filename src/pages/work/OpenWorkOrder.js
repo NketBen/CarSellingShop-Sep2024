@@ -81,12 +81,12 @@ const resetTimer = () => {
 
 
 
-
+//opción para borrar documento en coleción work
   const deleteWork = async (id) => {
     const userDoc = doc(db, "work", id);
     await deleteDoc(userDoc)
-      .then(() => alert("Tarea esta eliminada correctamente👍"))
-      .catch((error) => alert("No se encountra el documento!"));
+      .then(() => toast.success("Tarea esta eliminada correctamente👍"))
+      .catch((error) => toast.error("No se encountra el documento!"));
   };
 
   return (
@@ -114,21 +114,21 @@ const resetTimer = () => {
           {parseFloat(timer / 60).toFixed(2)}m {timer}s
         </h3>
         <div className="btn-wrapper">
-          <button
+          <button   // creamos botones para cuantar el tiempo
             className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-2 m-2 border-gray-300 rounded transition duration-150 ease-in-out"
             onClick={startTimer}
           >
             Start
           </button>
 
-          <button
+          <button  // creamos botones para pausar el tiempo
             className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-2 m-2 border-gray-300 rounded transition duration-150 ease-in-out"
             onClick={pauseTimer}
           >
             Pause
           </button>
 
-          <button
+          <button // creamos botones para resetear el tiempo
             className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-2 m-2 border-gray-300 rounded transition duration-150 ease-in-out"
             onClick={resetTimer}
           >
@@ -194,7 +194,7 @@ const resetTimer = () => {
         Editar OT
       </button>
 
-      <Button
+      <Button // Este es boton para enviar a firebase
      
        onClick={handleSubmit}
           

@@ -12,7 +12,7 @@ import "swiper/css/bundle";
 import { getAuth } from "firebase/auth";
 
 
-
+// componente para abrir imagenes adjuntados a insurance
 export default function OpenAttachedInsurance() {
   const auth = getAuth();
   const params = useParams();
@@ -23,7 +23,7 @@ export default function OpenAttachedInsurance() {
   const navigate = useNavigate();
   SwiperCore.use([Autoplay, Navigation, Pagination]);
  
-
+// tener documento que se busca mediante id que viene useParam de router
   useEffect(() => {
     async function getItem() {
       const docRef = doc(db, "insurance", params.insuranceId);
@@ -47,7 +47,7 @@ export default function OpenAttachedInsurance() {
   <div>
         <button
           onClick={() => {
-            navigate(`/open-insurance/${params.insuranceId}`);
+            navigate(`/open-insurance/${params.insuranceId}`); // para volver a este documento que abrió
           }}
           className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-40 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
         >
@@ -59,7 +59,7 @@ export default function OpenAttachedInsurance() {
     <main>
   
         <Swiper
-          slidesPerView={1}
+          slidesPerView={1} // abrimos imagenes en swipers
           navigation
           pagination={{ type: "progressbar" }}
           effect="fade"

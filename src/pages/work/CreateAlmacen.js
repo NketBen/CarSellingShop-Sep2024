@@ -15,6 +15,8 @@ import { toast } from "react-toastify";
 import Almacen from './AlmacenList';
 import StaffNavBar from "./StaffNavBar";
 
+//componente que solo crear tareas con formularios que tiene
+// cada campo de entrada es una campo en colección almacen en Firestore.
 function CreateAlmacen() {
   const [manName, setManName] = useState("");
   const [description, setDescription] = useState("");
@@ -51,7 +53,7 @@ const [paraForm, SetParaForm] = useState({
   const auth = getAuth();
   const navigate = useNavigate();
 
-//crear y subir piezas a almacen de piezas
+//crear y subir piezas a almacen de piezas con addDoc
 
   const creatStore = async () => {
     await addDoc(almacenCollectionRef, {

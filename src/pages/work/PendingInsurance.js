@@ -11,12 +11,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { toast } from "react-toastify";
 import StaffNavBar from "./StaffNavBar";
 
-
+// lista todos solicitud de seguros
 export default function PendingInsurance() {
   const [works, setWorks] = useState([]);
   const navigate = useNavigate();
-  const insuranceRef = collection(db, "insurance");
+  const insuranceRef = collection(db, "insurance"); //referencia a coleccion insurance
 
+  // hacer copia instantenea
   useEffect(() => {
     const unsuscribe = onSnapshot(insuranceRef, (snapshot) => {
       setWorks(
@@ -63,11 +64,11 @@ export default function PendingInsurance() {
       <h2 className="text-center">Listas de todos Solicitudes de Seguros </h2>
 
       <ul>
-        {works.map((insurance) => (
+        {works.map((insurance) => ( // muestramo cada una en la lista
           <li
             key={insurance.id}
             className="mb-5 mt-3 bg-clip-border p-6 border-4 border-violet-300 border-dashed"
-          >
+          > 
           <Link className="contents" to={`/open-insurance/${insurance.id}`}>
             <h3> Solicitante: {insurance.data.Apellido}  con telefono: {insurance.data.TelNo} y email: {insurance.data.Email}</h3>
             Nombre : {insurance.data.Nombre} <b /> <br />

@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
+// este componente solo se utilizo para prueba. se utiliza EditWorkOrder en su lugar
 export default function Update() {
   const [works, setWorks] = useState([]);
   const [name, setName] = useState("");
@@ -20,7 +21,7 @@ export default function Update() {
   const navigate = useNavigate();
   const workColledctionRef = collection(db, "work");
 
-  useEffect(() => {
+  useEffect(() => { //fetchData se utiliza para tener
     async function fetchData() {
       // You can await here
       const docRef = doc(db, "work", "pc333tfHPm54TzrjEFxN");
@@ -47,88 +48,18 @@ export default function Update() {
       
     }
     fetchData();
-  }, [id]); // Or [] if effect doesn't need props or state
+  }, [id]); // O [] si no necisita effecto
 
-  console.log(id);
-/*
-  useEffect(async () => {
-    const docRef = doc(db, "work", "id");
-    const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      setWorks(docSnap.datad);
-      setName(docSnap.name);
 
-      setEmergencia(docSnap.Emergencia);
-
-      setEstadoTrabajo(docSnap.EstadoTrabajo);
-
-      setTareas(docSnap.Tareas);
-
-      setTipoTrabajo(docSnap.TipoTrabajo);
-
-      setId(docSnap.id);
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  }, []);
-
-  */
-
-  /*
-  useEffect(() => {
-    const unsuscribe = onSnapshot(workColledctionRef, (snapshot) => {
-      setWorks(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        })));
-                setName(
-          snapshot.docs.map((doc) => ({
-           name:doc.name,
-          })) );
-
-        setEmergencia(
-          snapshot.docs.map((doc) => ({
-           Emergencia:doc.Emergencia,
-          })) );
-
-                  setEstadoTrabajo(
-          snapshot.docs.map((doc) => ({
-           EstadoTrabajo:doc.EstadoTrabajo,
-          })) );
-
-         setTareas(
-          snapshot.docs.map((doc) => ({
-           Tareas:doc.Tareas,
-          })) );
-
-         setTipoTrabajo(
-           snapshot.docs.map((doc) => ({
-             TipoTrabajo: doc.EstadoTrabajo,
-           }))
-         );
-
-                  setId(
-           snapshot.docs.map((doc) => ({
-             id: doc.id,
-           }))
-         );
-    });
-    return () => {
-      unsuscribe();
-    };
-  }, []);
-  */
 
   function handleSubmit(e) {
     e.preventDefault();
     if (Tareas === "" || id === "") {
       return;
     }
-    const workDoc = doc(db, "work", id);
-    updateDoc(workDoc, { Tareas, Emergencia, name, EstadoTrabajo })
+    const workDoc = doc(db, "work", id); // referecia de colecion work
+    updateDoc(workDoc, { Tareas, Emergencia, name, EstadoTrabajo }) // update actualiza su contenido
       .then((response) => {
         alert(" document Updated");
       })

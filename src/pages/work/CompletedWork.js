@@ -8,11 +8,13 @@ import { toast } from "react-toastify";
 import AwesomeSlider from "react-awesome-slider";
 import StaffNavBar from "./StaffNavBar";
 
+//componente que lista todos trabajos cerrado por CloseWork para su referencia 
 export default function Worklist() {
   const [works, setWorks] = useState([]);
   const navigate = useNavigate();
   const workColledctionRef = collection(db, "workClosed");
 
+// solo se hace copia instantenea en coleccion workClosed para montrarlo en pantalla.
   useEffect(() => {
     const unsuscribe = onSnapshot(workColledctionRef, (snapshot) => {
       setWorks(
