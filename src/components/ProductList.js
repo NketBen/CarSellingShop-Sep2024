@@ -5,6 +5,8 @@ import { MdLocationOn } from "react-icons/md";
 import { MdExitToApp, MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
+//solamente hace listado de items 
+
 export default function ProductList({ item, id, Edit, Delete }) {
   return (
     <li className="relative bg-white flex flex-col justify-between items-center shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-150 m-[10px]">
@@ -13,14 +15,14 @@ export default function ProductList({ item, id, Edit, Delete }) {
           className="h-[180px] w-full object-cover hover:scale-110 transition-scale duration-300 ease-in"
           alt=""
           loading="lazy"
-          src={item.imgUrls[0]}
+          src={item.imgUrls[0]} 
         />
-        <Moment
+        <Moment 
           className="absolute top-2 left-2 bg-[#3377cc] text-white uppercase text-xs font-semibold rounded-md px-2 py-1 shadow-lg"
           fromNow
         >
           {item.timestamp?.toDate()}
-        </Moment>
+        </Moment> 
 
         <div className="w-full p-[10px]">
           <div className="flex items-center space-x-1">

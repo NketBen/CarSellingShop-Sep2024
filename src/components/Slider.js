@@ -86,12 +86,16 @@ import "swiper/css/bundle";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { db } from "../firebase";
+ 
+//solo hace deslice de imagenes de coche
 
 export default function Slider() {
   const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(true);
   SwiperCore.use([Autoplay, Navigation, Pagination]);
   const navigate = useNavigate();
+
+  // se hace consultas de 10 imagenes con  tiempo de subida desciende y lo ponemos en swiper para muestrarlo
   useEffect(() => {
     async function getItem() {
       const itemsRef = collection(db, "items");

@@ -4,6 +4,7 @@
 
 
 import Spinner from "react-bootstrap/Spinner";
+//cuando estamos cargando o esperando valor, se utiliza ests
 export default function spinner() {
   return (
     <div>

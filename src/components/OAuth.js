@@ -1,4 +1,5 @@
-
+// Componente para usar proveedor google signIn
+// componente OAuth.js
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { FcGoogle } from "react-icons/fc";
@@ -10,6 +11,8 @@ export default function OAuth() {
   async function onGoogleClick() {
     try {
       const auth = getAuth();
+      
+      //llamar a provvedor google
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
