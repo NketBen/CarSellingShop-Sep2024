@@ -21,6 +21,7 @@ import { db } from "../firebase";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
+//componente para Editar
 export default function CreateProductList() {
   const navigate = useNavigate();
   const auth = getAuth();
@@ -154,8 +155,8 @@ export default function CreateProductList() {
         uploadTask.on(
           "state_changed",
           (snapshot) => {
-            // Observe state change events such as progress, pause, and resume
-            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+           // Observar eventos de cambio de estado como progreso, pausa y reanudación
+            // Obtener el progreso de la tarea, incluido el número de bytes cargados y el número total de bytes que se cargarán
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log("Upload is " + progress + "% done");
@@ -170,12 +171,12 @@ export default function CreateProductList() {
             }
           },
           (error) => {
-            // Handle unsuccessful uploads
+            // si hay error
             reject(error);
           },
           () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+           // Manejar cargas exitosas al completarse
+           // obtenga la URL de descarga: 
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               resolve(downloadURL);
             });
@@ -204,9 +205,9 @@ export default function CreateProductList() {
     delete paraFormCopy.latitude;
     delete paraFormCopy.longitude;
     
-    const docRef = doc(db, "items", params.itemId);
+    const docRef = doc(db, "items", params.itemId); // tener referenciar para actualizar
 
-    await updateDoc(docRef, paraFormCopy);
+    await updateDoc(docRef, paraFormCopy); // actualizar item con nuevos entradas
     setLoading(false);
     toast.success("Listing Edited");
     navigate(`/category/${paraFormCopy.type}/${docRef.id}`);

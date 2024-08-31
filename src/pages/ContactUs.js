@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
 import { useNavigate, useParams } from "react-router-dom";
+
+
+//componente para contestar quejas y consultas. Solo se usar en clienteComplains para contestar clientes
 export default function ContactUs({ userRef}) {
   const [cliente, setCliente] = useState([]);
   const [messages, setMessages] = useState("");
@@ -14,6 +17,7 @@ export default function ContactUs({ userRef}) {
   const navigate = useNavigate();
   const params = useParams();
 
+//tener documento usando ruta de mensaje pulsado en ClientComplains
   useEffect(() => {
     async function getClient() {
       const docRef = doc(db, "message", params.messageId);

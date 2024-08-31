@@ -16,7 +16,7 @@ import "swiper/css/bundle";
 
 import { getAuth } from "firebase/auth";
 
-
+//componente solo abre imagenes de item cuando se lo hace clic sobre ellos
 export default function Items() {
   const auth = getAuth();
   const params = useParams();
@@ -50,8 +50,8 @@ export default function Items() {
     
     <div>
         <button
-          onClick={() => {
-            navigate(`/category/${item.type}/${item.id}`);
+          onClick={() => { //boto para volver a item que se abrio
+            navigate(`/category/${item.type}/${item.id}`); 
           }}
           className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 absolute top-20 right-1 h-26 w-26  border-gray-300 rounded transition duration-150 ease-in-out"
         >
@@ -62,8 +62,8 @@ export default function Items() {
     
     <main>
   
-        <Swiper
-          slidesPerView={1}
+        <Swiper 
+          slidesPerView={1}// imagenes de item que se pulso
           navigation
           pagination={{ type: "progressbar" }}
           effect="fade"

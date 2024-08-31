@@ -44,7 +44,7 @@ export default function MyForms (){
     
     const usersCollectionRef = collection(db, "message");
 
-      const createMessage = async () => {
+      const createMessage = async () => { //subimos los contenidos de formulario a firebase mediante AddDoc
     await addDoc(usersCollectionRef, {
        Nombre: newNombre,
        Apellido: newApellido,
@@ -86,7 +86,7 @@ export default function MyForms (){
   };
 
 
-
+// se hace submit a firebase
     const handleSubmit = e =>{
         e.preventDefault();
 

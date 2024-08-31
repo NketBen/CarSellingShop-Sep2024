@@ -19,6 +19,8 @@ import Contact from "../components/Contact";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import CarFinance from "./work/CarFinance";
 
+// componente que tiene todos carateristica de item in firestore.
+//mediante getDoc, retira un documento en coleccion items utilizando id que viene de router-react
 export default function Items() {
   const auth = getAuth();
   const params = useParams();
@@ -32,6 +34,7 @@ export default function Items() {
  
 
   useEffect(() => {
+    // buscamos item lo que tiene su id en la ruta
     async function getItem() {
       const docRef = doc(db, "items", params.itemId);
       const docSnap = await getDoc(docRef);
@@ -51,15 +54,15 @@ export default function Items() {
   return (
     <main>
       <Link className="contents" to={`/item-foto/${params.itemId}`}>
-        <Swiper
-          slidesPerView={1}
+        <Swiper 
+          slidesPerView={1} // componente swiper para deslice de imagenes tenido en getItem
           navigation
           pagination={{ type: "progressbar" }}
           effect="fade"
           modules={[EffectFade]}
           autoplay={{ delay: 5000 }}
         >
-          {item.imgUrls.map((url, index) => (
+          {item.imgUrls.map((url, index) => ( // map de imagenes para tener cada una url en la matrix
             <SwiperSlide key={index}>
               <div
                 className="relative w-full overflow-hidden h-[300px]"
@@ -74,8 +77,8 @@ export default function Items() {
       </Link>
       <div
         className="fixed top-[13%] right-[3%] z-10 bg-white cursor-pointer border-2 border-gray-400 rounded-full w-12 h-12 flex justify-center items-center"
-        onClick={() => {
-          navigator.clipboard.writeText(window.location.href);
+        onClick={() => { 
+          navigator.clipboard.writeText(window.location.href); 
           setShareLinkCopied(true);
           setTimeout(() => {
             setShareLinkCopied(false);
@@ -86,7 +89,7 @@ export default function Items() {
       </div>
       {shareLinkCopied && (
         <p className="fixed top-[23%] right-[5%] font-semibold border-2 border-gray-400 rounded-md bg-white z-10 p-2">
-          Link Copied
+          Link Copied 
         </p>
       )}
 
@@ -95,7 +98,7 @@ export default function Items() {
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {item.name} -{" "}
             {item.offer
-              ? item.discountedPrice
+              ? item.discountedPrice // si tiene oferta,. ponemos discountPrice (precio de discuento)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
               : item.realPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -109,7 +112,7 @@ export default function Items() {
             <p className="bg-red-800 w-full max-w-[200px] rounded-md p-1 text-white text-center font-semibold shadow-md">
               {item.type === "new" ? "New" : "SeconHand"}
             </p>
-            {item.offer && (
+            {item.offer && ( // precio ofertada sera (precio real - precio discuentado)
               <p className="w-full max-w-[200px] bg-green-800 rounded-md p-1 text-white text-center font-semibold shadow-md">
                 €{+item.realPrice - +item.discountedPrice} rebaja
               </p>
@@ -122,10 +125,10 @@ export default function Items() {
           <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold mb-6">
             <li className="flex items-center whitespace-nowrap">
               <MdOutlineAirlineSeatReclineNormal icon="fa-regular fa-person-seat" />
-              {+item.seats > 2 ? `${item.seats} seats` : "2 Seats"}
+              {+item.seats > 2 ? `${item.seats} seats` : "2 Seats"} 
             </li>
 
-            {item.type !== "new" && (
+            {item.type !== "new" && ( 
               <li className="flex items-center whitespace-nowrap">
                 <FcManager icon="fa-solid fa-person" />
                 {+item.previousOwners > 1

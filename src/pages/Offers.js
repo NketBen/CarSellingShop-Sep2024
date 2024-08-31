@@ -14,13 +14,15 @@ import Spinner from "../components/Spinner";
 import ProductList from "../components/ProductList";
 
 
-
+//componente de oferta
 export default function Offers() {
   const [items, setItems] = useState(null);
  const [loading, setLoading] = useState(true); 
   const [lastGetItems, setLastGetItems] = useState(null);
+
+  //consulta para tener todos coche que tiene oferta en coleccion items. solo cogemos 8 de ellos
   useEffect(() => {
-    async function getItems() {
+    async function getItems() { 
       try {
         const itemRef = collection(db, "items");
         const q = query(
@@ -49,6 +51,7 @@ export default function Offers() {
     getItems();
   }, []);
 
+ // buscar mas items
   async function getMoreItem() {
     try {
       const itemRef = collection(db, "items");
@@ -69,7 +72,7 @@ export default function Offers() {
           data: doc.data(),
         });
       });
-      setItems((prevState)=>[...prevState, ...items]);
+      setItems((prevState)=>[...prevState, ...items]); //ponemos mas item con anterior
       setLoading(false);
     } catch (error) {
       toast.error("No hay mas item");
@@ -85,7 +88,7 @@ export default function Offers() {
         <div>
           <main>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-              {items.map((item) => (
+              {items.map((item) => ( //productlist containe todo listas
                 <ProductList
                   key={item.id}
                   id={item.id}
@@ -97,7 +100,7 @@ export default function Offers() {
           {lastGetItems && (
             <div className="flex justify-center items-center">
               <button
-                onClick={getMoreItem}
+                onClick={getMoreItem} //llamamos este función cuando se pulsa este boton 
                 className="bg-white px-3 py-1.5 text-gray-700 border border-gray-300 mb-6 mt-6 hover:border-slate-600 rounded transition duration-150 ease-in-out"
               >
                 ¿Quieres Cargar mas Item?

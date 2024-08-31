@@ -14,11 +14,14 @@ import Spinner from "../components/Spinner";
 import ProductList from "../components/ProductList";
 import { useParams } from "react-router-dom";
 
+//componente que clasifica items. puede se nuevo, segunda mano o offerta
 export default function Category() {
   const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const [lastGetItem, setLastGetItem] = useState(null);
   const params = useParams();
+
+  //hacer consulta para tener categoria
   useEffect(() => {
     async function getItems() {
       try {
@@ -29,6 +32,7 @@ export default function Category() {
           orderBy("timestamp", "desc"),
           limit(8)
         );
+        // consulta para tener las ultimas items
         const querySnap = await getDocs(q);
         const lastVisible = querySnap.docs[querySnap.docs.length - 1];
         setLastGetItem(lastVisible);
@@ -49,6 +53,7 @@ export default function Category() {
     getItems();
   }, [params.categoryName]);
 
+ // segiur buscar mas item
   async function getMoreItems() {
     try {
       const itemRef = collection(db, "items");
@@ -69,6 +74,7 @@ export default function Category() {
           data: doc.data(),
         });
       });
+      //juntamos todos items en las consultas y se lo passamos a items
       setItems((prevState) => [...prevState, ...items]);
       setLoading(false);
     } catch (error) {

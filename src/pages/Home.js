@@ -15,7 +15,7 @@ export default function Home() {
       try {
         // tener referencia
         const itemsRef = collection(db, "items");
-        //Crear consulyas
+        //Crear consultas
         const q = query(
           itemsRef,
           where("offer", "==", true),

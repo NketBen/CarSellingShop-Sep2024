@@ -10,6 +10,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
+//componente para crear items
 export default function CreateProductList() { 
   const navigate = useNavigate();
   const auth = getAuth();
@@ -160,7 +161,7 @@ export default function CreateProductList() {
     const docRef = await addDoc(collection(db, "items"), paraFormCopy);// subir imagenes url y todos a firestore
     setLoading(false);
     toast.success("Se ha creado listado de item correctamente");
-    navigate(`/category/${paraFormCopy.type}/${docRef.id}`) //navegar a item subida
+    navigate(`/category/${paraFormCopy.type}/${docRef.id}`) //navegar a categoria de item subida
    
   }
 
