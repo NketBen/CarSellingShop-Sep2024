@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useAuth, upload } from "./StorageInfo";
 
+//funcion que actualizare  perfile de usuario en ventas de coche
+
 export default function Profile() {
   const currentUser = useAuth();
   const [photo, setPhoto] = useState(null);
@@ -21,7 +23,7 @@ export default function Profile() {
     upload(photo, currentUser, setLoading);
   }
 
-  useEffect(() => {
+  useEffect(() => { // ver que hay usuario se ha iniciado sesion para tener su foto 
     if (currentUser?.photoURL) {
       setPhotoURL(currentUser.photoURL);
     }
@@ -37,7 +39,7 @@ export default function Profile() {
       >
         Upload
       </button>
-      <img src={photoURL} alt="Avatar" className="avatar" />
+      <img src={photoURL} alt="Avatar" className="avatar" /> 
       <div>
         Perfile de Usuario: {currentUser?.displayName}, {currentUser?.email}{" "}
       </div>
