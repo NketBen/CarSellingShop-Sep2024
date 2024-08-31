@@ -5,6 +5,8 @@ import { collection, getDoc, doc, deleteDoc } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
 
+//demonstracion de react-creadit-card
+
 const CardInfo = () => {
 
   const [item, setItem] = useState("");
@@ -74,7 +76,7 @@ useEffect(() => {
           }}
           className="bg-indigo-500 shadow-lg shadow-indigo-500/50 px-8 m-3 border-gray-300 rounded transition duration-150 ease-in-out"
         >
-          Tarjeta de PaySTack
+         Google pay
         </button>
 
         <button

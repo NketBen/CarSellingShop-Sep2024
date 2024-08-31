@@ -5,7 +5,7 @@ import { getDoc, doc} from "firebase/firestore";
 import { db } from "../firebase";
 import GooglePayButton from "@google-pay/button-react";
 
-
+//demonstracion de pago por googlepay
 function BuyCard() {
  
   const [item, setItem] = useState("");
