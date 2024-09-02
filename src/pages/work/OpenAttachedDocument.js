@@ -69,6 +69,7 @@ export default function OpenAttachedDocument() {
           effect="fade"
           modules={[EffectFade]}
           autoplay={{ delay: 5000 }}
+          className="relative w-1/2 overflow-hidden h-[800px]"
         >
           {item.imageUrl.map((url, index) => (
             <SwiperSlide key={index}>

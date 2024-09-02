@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { getAuth } from "firebase/auth";
+import { useAuthStatus } from "../../hooks/useAuthStatus";
 import {
   collection,
   doc,
@@ -41,6 +42,7 @@ export default function CitaPrevia() {
   const auth = getAuth();
   const navigate = useNavigate();
   const params=useParams();
+   const { loggedIn, checkingStatus } = useAuthStatus();
 
 //crear y subir cita a coleccion cita
 
@@ -63,33 +65,6 @@ export default function CitaPrevia() {
       .catch((error) => {
         alert(error.message);
       });
- 
-      //       try {
-      //   //tener referencia de item
-       
-      //   // crear consulta
-       
-      //   const q = query(
-      //     citaCollectionRef,
-      //     where("userRef", "==", auth.currentUser.uid),
-      //     orderBy("timestamp", "desc"),
-      //     limit(1)
-      //   );
-      //   console.log(auth.currentUser.uid);
-
-      //   // executar este consulta
-      //   const querySnap = await getDocs(q);
-      //   const items = [];
-      //   querySnap.forEach((doc) => {
-      //     return items.push({
-      //       id: doc.id,
-      //       data: doc.data(),
-      //     });
-      //   });
-      //   setCita(items);
-      // } catch (error) {
-      //   alert("No se puede cargar documentos");
-      // }
    
    
    };
@@ -101,16 +76,17 @@ export default function CitaPrevia() {
 if(startDate<new Date()){
     return toast.error("fecha elegido debe ser hoy o posterior");
 }
+
+if(!loggedIn){
+    return toast.error("Tiene que inicia sesion anters de solicitar Cita");
+}
     creatStore();
 
-     // navigate(`/open-cita-list/${params.citaListId}`) 
+   
      navigate("/OpenJustMyCita")
   };
 
-  //  useEffect(() => {
-   
-  // }, []);
-  //navegar a item subida
+
  
 
   return (

@@ -35,7 +35,7 @@ export default function Worklist() {
       .then(() => toast.success(" Orden de trabajo eliminado correctamente👍"))
       .catch((error) => alert("No se encountra el documento!"));
   };
-
+   
   return (
     <div className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed">
       <nav className="mt-3 ps-4">
@@ -71,6 +71,7 @@ export default function Worklist() {
             ID trabajo Cerrado: {work.data.id} <br />
             Name: {work.data.name} <br />
             Creador de OT: {work.data.Creator} <br />
+            Quien hice el trabajo: {work.data.whoDid} <br/>
             Discripcion de trabajo: {work.data.Tareas} <br />
             Tipo de Trabajo: {work.data.TipoTrabajo} <br />
             Nombre de Departamento: {work.data.NameDepart} <br />
@@ -80,10 +81,10 @@ export default function Worklist() {
             Contrata Name: {work.data.contractaName} <br />
             Comentario de Tecnico: {work.data.commentsTecnico} <br />
             Contracta Numero de telefono: {work.data.TelNo} <br />
-            Direccion de Contracta: {work.data.Address} <br />
-            Fecha de Inicio: {work.data.FechaInicio} <br />
-            Fecha para Terminar: {work.data.FechaTerminar} <br/>
-            Imagenes Adjuntados: {work.data.imageUrl} <br/>
+            Direccion de Contracta: {work.data.address} <br />
+            Carga de Horas: {work.data.hourDone} <br />
+
+            Imagenes Adjuntados: {work.data.imageUrl? (work.data.imageUrl).length : "No imagenes adjuntado"} <br/>
               
              <button
                 onClick={() => {

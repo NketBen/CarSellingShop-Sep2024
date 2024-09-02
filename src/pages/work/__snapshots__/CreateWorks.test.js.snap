@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="bg-slate-400 bg-clip-border p-6 border-4 border-violet-300 border-dashed"
+  >
+    <form
+      className=""
+      onSubmit={[Function]}
+    >
+      <div
+        className="mb-3 text-center ps-5 pe-5  input-group"
+      >
+        <span
+          className="input-group-text"
+        >
+          Nombre
+        </span>
+        <input
+          aria-label="Entra tu Nombre"
+          className="form-control"
+          id="newName"
+          onChange={[Function]}
+          value=""
+        />
+      </div>
+      <div
+        className="mb-3 text-center ps-5 pe-5  input-group"
+      >
+        <span
+          className="input-group-text"
+        >
+          Creator
+        </span>
+        <input
+          aria-label="Entra Nombre de creador de Orden"
+          className="form-control"
+          id="creator"
+          onChange={[Function]}
+          value=""
+        />
+      </div>
+      <div
+        className="mb-3 text-center ps-5 pe-5  input-group"
+      >
+        <span
+          className="input-group-text"
+        >
+          Nombre de Departamento
+        </span>
+        <input
+          aria-label="Entra Nombre de Departamento aqui"
+          className="form-control"
+          id="newDepart"
+          onChange={[Function]}
+          value=""
+        />
+      </div>
+      <div
+        className="ps-5 pe-5"
+      >
+        <label
+          className="form-label"
+          htmlFor="formGridState"
+        >
+          Seleciona tipo de trabajo contigo
+        </label>
+        <select
+          className="form-select"
+          defaultValue="..."
+          id="newForm"
+          onChange={[Function]}
+          value=""
+        >
+          <option>
+            ....
+          </option>
+          <option>
+            Preventivo
+          </option>
+          <option>
+            Corectivo
+          </option>
+          <option>
+            Predictivo
+          </option>
+          <option>
+            Mejoras
+          </option>
+          <option>
+            Propuesta
+          </option>
+        </select>
+      </div>
+      <div
+        className="tareas"
+      >
+        <div
+          className="mt-5 mb-4 pe-5 ps-5 input-group"
+        >
+          <span
+            className="input-group-text"
+          >
+            Discripcion de trabajo
+          </span>
+          <textarea
+            aria-label="Escribir Discripcion de trabajo"
+            className="form-control"
+            id="newTarea"
+            onChange={[Function]}
+            value=""
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="ps-5 pe-5"
+        >
+          <label
+            className="form-label"
+            htmlFor="formGridState"
+          >
+            Estado de Trabajo
+          </label>
+          <select
+            className="form-select"
+            defaultValue="..."
+            id="estado"
+            onChange={[Function]}
+            value=""
+          >
+            <option>
+              ....
+            </option>
+            <option>
+              Abierta
+            </option>
+            <option>
+              En curso
+            </option>
+            <option>
+              Cerrado
+            </option>
+            <option>
+              Planificado
+            </option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div
+          className="ps-5 pe-5"
+        >
+          <label
+            className="form-label"
+            htmlFor="formGridState"
+          >
+            Urgencia
+          </label>
+          <select
+            className="form-select"
+            defaultValue="..."
+            id="urgencia"
+            onChange={[Function]}
+          >
+            <option>
+              ....
+            </option>
+            <option>
+              Normal
+            </option>
+            <option>
+              Planificado
+            </option>
+            <option>
+              Urgente
+            </option>
+          </select>
+          <p
+            className="text-center font-semibold mt-3"
+          >
+             Contrata 
+          </p>
+          <div
+            className="flex mb-6"
+          >
+            <button
+              className="mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full mb-3 bg-white text-black"
+              id="contracta"
+              onClick={[Function]}
+              type="button"
+              value={true}
+            >
+              Si
+            </button>
+            <button
+              className="ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full mb-3 bg-slate-600 text-white"
+              id="contracta"
+              onClick={[Function]}
+              type="button"
+              value={false}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="mb-3 mt-3  ps-5 pe-5 "
+      >
+        Elegir Fecha de Inicio:
+        <div
+          className="react-datepicker-wrapper"
+        >
+          <div
+            className="react-datepicker__input-container"
+          >
+            <input
+              className=""
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              readOnly={false}
+              type="text"
+              value="08/27/2024"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="mb-3 mt-3  ps-5 pe-5 "
+      >
+        Elegir Fecha para Terminar:
+        <div
+          className="react-datepicker-wrapper"
+        >
+          <div
+            className="react-datepicker__input-container"
+          >
+            <input
+              className=""
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              readOnly={false}
+              type="text"
+              value="08/27/2024"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="mb-6"
+      >
+        <p
+          className="text-lg font-semibold"
+        >
+          Images
+        </p>
+        <p
+          className="text-gray-600"
+        >
+          Primer imagen sera la cubierta (max 10)
+        </p>
+        <input
+          accept=".jpg,.png,.jpeg"
+          className="w-full px-3 py-1.5 text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:bg-white focus:border-slate-600"
+          id="images"
+          multiple={true}
+          onChange={[Function]}
+          required={true}
+          type="file"
+        />
+      </div>
+      <div
+        className="text-center"
+      >
+        <button
+          className="mb-5 mt-3 ps-5 mx-auto btn btn-primary"
+          disabled={false}
+          type="submit"
+        >
+          Crear Orden
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;

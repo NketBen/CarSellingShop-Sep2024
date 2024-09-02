@@ -13,6 +13,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Navigate, useNavigate } from "react-router-dom";
 import OAuth from './../../components/OAuth';
+import { useAuthStatus } from "../../hooks/useAuthStatus";
 
 
 
@@ -28,6 +29,7 @@ export default function Insurance (){
     const [loader, setLoader] = useState(false);
 
      const navigate = useNavigate();
+      const { loggedIn, checkingStatus } = useAuthStatus();
  
  const [paraForm, SetParaForm] = useState({ 
 
@@ -207,9 +209,12 @@ export default function Insurance (){
 
     const handleSubmit = e =>{
         e.preventDefault();
+        if(!loggedIn){
+    return toast.error("Tiene que inicia sesion anters de solicitar Seguro");
+}
 
       createMessage();
-       navigate("/PendingInsurance") // si todo sale bien, iremos a ruta en PendingInsurance
+       navigate("/Home") // si todo sale bien, iremos a ruta en PendingInsurance
 
     };
     

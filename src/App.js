@@ -39,7 +39,7 @@ import OpenAttachedDocument from "./pages/work/OpenAttachedDocument";
 import OpenAlmacen from "./pages/work/OpenAlmacen";
 import AlmacenList from "./pages/work/AlmacenList"; 
 import StaffNavBar from "./pages/work/StaffNavBar";
-//import SearchBar from "./pages/work/SearchBar";
+import CitaReply from "./pages/work/CitaReply";
 import CarFinance from "./pages/work/CarFinance";
 import PendingFinance from "./pages/work/PendingFinance";
 import CreateAlmacen from "./pages/work/CreateAlmacen";
@@ -51,9 +51,17 @@ import OpenAttachedInsurance from "./pages/work/OpenAttachedInsurance";
 import CitaPrevia from "./pages/work/CitaPrevia";
 import CitaList from "./pages/work/CitaList";
 import OpenCitaList from "./pages/work/OpenCitaList";
+import WarrantAndDocuments from "./pages/work/WarrantAndDocuments";
+import OpenWarrantAndDocumentsList from "./pages/work/OpenWarrantAndDocumentsList";
+import OpenAttachedWarrantAndDocuments from "./pages/work/OpenAttachedWarrantAndDocuments";
+import WarrantAndDocumentsList from "./pages/work/WarrantAndDocumentsList";
+import OpenJustMyCita from "./pages/work/OpenJustMyCita";
 
 
 
+
+
+// con ayuda de BrowserRouter, hacemos todo navegación 
 function App() {
   return (
     <div>
@@ -68,7 +76,12 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/MyForms" element={<MyForms />} />
           <Route path="/Document" element={<Document/>} />
-          
+          <Route path="/WarrantAndDocuments" element={<WarrantAndDocuments/>} />
+          <Route path="/WarrantAndDocumentsList" element={<WarrantAndDocumentsList/>} />
+          <Route path="/OpenWarrantAndDocumentsList" element={<OpenWarrantAndDocumentsList/>} />
+          <Route path="/open-warrant-and-documentsList/:warrantId" element={<OpenWarrantAndDocumentsList />} />
+          <Route path="/OpenAttachedWarrantAndDocuments" element={<OpenAttachedWarrantAndDocuments/>} />
+          <Route path="/open-attached-warrant-andDocuments/:warrantId" element={<OpenAttachedWarrantAndDocuments />} />
           <Route path="/document/:workId" element={<Document />} />
           <Route path="/ReAbreOT" element={<ReAbreOT />} />
           <Route path="/re-abre-OT/:workClosedId" element={<ReAbreOT />} />
@@ -89,10 +102,13 @@ function App() {
           <Route path="/open-finance/:financeId" element={<OpenFinance />} />
           <Route path="/ProfileInfo" element={<ProfileInfo />} />
           <Route path="/MyStaffProfile" element={<MyStaffProfile />} />
+           <Route path="/OpenJustMyCita" element={<OpenJustMyCita />} />
           <Route path="/StaffHome" element={<StaffHome />} />
           <Route path="/CompletedWork" element={<CompletedWork />} />
           <Route path="/completed-work/:workId" element={<CompletedWork />} />
           <Route path="/WorkList" element={<WorkList />} />
+           <Route path="/CitaReply" element={<CitaReply />} />
+           <Route path="/cita-reply/:citaListId" element={<CitaReply />} />
           <Route path="/CitaList" element={<CitaList />} />
           <Route path="/cita-list/:citaListId" element={<CitaList />} />
           <Route path="/Open-cita-list/:citaListId" element={<OpenCitaList />} />
@@ -144,8 +160,9 @@ function App() {
           </Route>
         </Routes>
       </Router>
-      <ToastContainer
-        position="bottom-center"
+      
+      <ToastContainer 
+        position="bottom-center" //todos toast que utilizaremos in nuestra componentes
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

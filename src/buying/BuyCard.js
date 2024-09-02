@@ -4,6 +4,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getDoc, doc} from "firebase/firestore";
 import { db } from "../firebase";
 import GooglePayButton from "@google-pay/button-react";
+import { toast } from "react-toastify";
+import { useAuthStatus } from "../hooks/useAuthStatus";
 
 //demonstracion de pago por googlepay
 function BuyCard() {
@@ -13,6 +15,7 @@ function BuyCard() {
   const [offer, setOffer] = useState("");
   const [discountedPrice, setDiscountedPrice] = useState("");
   const [realPrice, setRealPrice] = useState("");
+   const { loggedIn, checkingStatus } = useAuthStatus();
   
   
   const navigate = useNavigate();
@@ -60,6 +63,7 @@ const price = offer? discountedPrice.toString(): realPrice.toString();
       </nav>
       <h1>Google Payment</h1>
       <hr />
+     { (loggedIn)? (
       <GooglePayButton
         environment="TEST"
         paymentRequest={{
@@ -109,7 +113,9 @@ const price = offer? discountedPrice.toString(): realPrice.toString();
         existingPaymentMethodRequired="false"
         buttonColor="black"
         buttonType="Buy"
-      />
+      />) : "Tienes que inicia sesion antes de hacer compras" }
+
+      
       <Link className="contents" to={`/category/${item.type}/${params.itemId}`}>
         <img
           className="h-[300px] w-1/2 contain p-2 mt-3 hover:scale-110 transition-scale duration-300 ease-in"
@@ -118,7 +124,7 @@ const price = offer? discountedPrice.toString(): realPrice.toString();
           src={item.imgUrls}
           width="100"
           height="50"
-        />
+        /> 
       </Link>
       <p>{item.name}</p>
       <h2 className=" left-1 m-1">

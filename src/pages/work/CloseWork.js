@@ -53,6 +53,7 @@ function CloseWork() {
   const [imgUrls, setImgUrls]= useState([]);
   const [contractaName, setContractaName] = useState("No contratada");
   const [address, setAddress] = useState("No contratada");
+  const[imgAdjuntado, setImgAdjuntado]= useState();
   const auth = getAuth();
 
   const navigate = useNavigate();
@@ -92,6 +93,7 @@ function CloseWork() {
         setId(docSnap.id);
         setTimeStart(docSnap.data().timeStart);
         setTimeFinish(docSnap.data().timeFinish);
+        setImgAdjuntado(docSnap.data().imgAdjuntado);
         
 
       } else {
@@ -126,6 +128,7 @@ function CloseWork() {
          contractaName: contractaName,
          commentsTecnico: commentsTecnico,
          userRef: userRef,
+         imgAdjuntado:imgAdjuntado,
         imageUrl:  imgUrls,
        })
          .then(() => {

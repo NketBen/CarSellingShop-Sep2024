@@ -10,11 +10,13 @@ import { v4 as uuidv4 } from "uuid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { useAuthStatus } from "../../hooks/useAuthStatus";
 
 
 export default function CarFinance() {
   const navigate = useNavigate();
   const auth = getAuth();
+    const { loggedIn, checkingStatus } = useAuthStatus();
   const [loading, setLoading] = useState(false);
   const [paraForm, SetParaForm] = useState({
     type: "new",
@@ -100,12 +102,12 @@ export default function CarFinance() {
   }
   async function onSubmit(e) {
     e.preventDefault();
-    setLoading(true);
-    // if (name) {
-    //   setLoading(false);
-    //   toast.error("Has dicho que has cambiado su nombre, una de sus nombres debe ser differente");
-    //   return;
-    // }
+    
+   if(!loggedIn){
+    return toast.error("Tiene que inicia sesión anters de solicitar financiación");
+}
+     setLoading(true);
+
     if (images.length > 50) {
       setLoading(false);
       toast.error("No se permite mas de 10 imagenes");
@@ -164,7 +166,7 @@ export default function CarFinance() {
     const docRef = await addDoc(collection(db, "finance"), paraFormCopy);
     setLoading(false);
     toast.success("Se ha creado listado de finance correctamente. En 48hrs te llamaremos por el resultado");
-    navigate("/PendingFinance") // si todo sale bien, iremos a ruta en OpenFinance 
+    navigate("/Home") // si todo sale bien, iremos a ruta en Home 
    
   }
 

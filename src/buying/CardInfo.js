@@ -4,6 +4,8 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { collection, getDoc, doc, deleteDoc } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
+import { useAuthStatus } from "../hooks/useAuthStatus";
+import { toast } from "react-toastify";
 
 //demonstracion de react-creadit-card
 
@@ -12,6 +14,7 @@ const CardInfo = () => {
   const [item, setItem] = useState("");
   const [id, setId] = useState("");
   const params = useParams();
+  const { loggedIn, checkingStatus } = useAuthStatus();
   const [state, setState] = useState({
     number: '',
     expiry: '',
@@ -55,6 +58,10 @@ useEffect(() => {
 
     const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(!loggedIn){
+    return toast.error("Tiene que inicia sesion anters de hace compras");
+}
     alert("Compra esta enviado");
     
   
