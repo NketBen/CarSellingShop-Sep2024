@@ -214,14 +214,14 @@ getRol5()
     }
   }
   return (
-    <div className="bg-white border-b shadow-sm sticky top-0 z-40 mr-4 ">
+    <div className="bg-white border-b shadow-sm flex top-0 z-40 mr-4 ">
       <header className="flex justify-between items-center px-3 max-w-8xl mx-auto ">
 
         <div>
           <ul className="flex ">
 
           <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/MyWorkList") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/MyWorkList")}
@@ -230,7 +230,7 @@ getRol5()
             </li>
 
                <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/AlmacenList") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/AlmacenList")}
@@ -240,7 +240,7 @@ getRol5()
 
 
               <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/ClientComplains") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/ClientComplains")}
@@ -249,7 +249,7 @@ getRol5()
             </li>
 
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/WorkList") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/WorkList")}
@@ -257,7 +257,7 @@ getRol5()
               {worklist}
             </li>
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/CreateWorks") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/CreateWorks")}
@@ -267,7 +267,7 @@ getRol5()
 
 
              <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/AlmacenList") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/AlmacenList")}
@@ -277,7 +277,7 @@ getRol5()
 
 
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/CreateAlmacen")  &&
                 "text-black border-b-red-500"
               }`}
@@ -288,7 +288,7 @@ getRol5()
             </li>
 
              <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/PendingWorks")  &&
                 "text-black border-b-red-500"
                 }`}
@@ -299,7 +299,7 @@ getRol5()
               </li>
 
               <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/CompletedWork")  &&
                 "text-black border-b-red-500"
                 }`}
@@ -310,7 +310,7 @@ getRol5()
               </li>
            
                    <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 (gotoRoute("/sign-in") || gotoRoute("/MyStaffProfile") ) &&
                 "text-black border-b-red-500"
               }`}
@@ -323,7 +323,7 @@ getRol5()
 
 
              <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/CarFinance") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/CarFinance")}
@@ -332,7 +332,7 @@ getRol5()
             </li>
 
                <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/PendingFinance") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/PendingFinance")}
@@ -341,7 +341,7 @@ getRol5()
             </li>
 
                          <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/insurance") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/Insurance")}
@@ -351,7 +351,7 @@ getRol5()
 
             
              <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/CitaList") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/CitaList")}
@@ -360,7 +360,7 @@ getRol5()
             </li>
 
               <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-4 ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/PendingInsurance") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/PendingInsurance")}
@@ -369,7 +369,7 @@ getRol5()
             </li>
 
            <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-4 ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent mr-3 ${
                 gotoRoute("/WarrantAndDocuments") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/WarrantAndDocuments")}
